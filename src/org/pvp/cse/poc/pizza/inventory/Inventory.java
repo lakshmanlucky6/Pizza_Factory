@@ -1,7 +1,7 @@
 package org.pvp.cse.poc.pizza.inventory;
 
-import java.geometry.Side;
 import org.pvp.cse.poc.pizza.model.Pizza;
+import org.pvp.cse.poc.pizza.model.Side;
 
 import java.util.HashMap;
 import java.util.Map;
