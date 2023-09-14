@@ -7,13 +7,14 @@ public class Order {
     List<Pizza> pizzas;
     List<Side> sides;
     Menu menu;
-    double cost(){
+    public double cost(){
         double costs=0.0;
         for(int i=0;i<pizzas.size();i++){
             costs=costs+menu.getPizzaCost(pizzas.get(i).getName(),pizzas.get(i).getSize());
+            costs=costs+menu.getToppingCost(pizzas.get(i).getToppingName());
         }
         for(int i=0;i<sides.size();i++){
-            costs=costs+menu.getPizzaCost(pizzas.get(i).getName(),pizzas.get(i).getSize());
+            costs=costs+menu.getSidesCost(sides.get(i).getName(),sides.get(i).getQty());
         }
         return costs;
     }
