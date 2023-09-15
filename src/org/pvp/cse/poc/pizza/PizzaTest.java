@@ -11,23 +11,26 @@ public class PizzaTest {
         System.out.println("Welcome to PizzaFactory!");
         Inventory inventory = null;
         Menu menu = null;
+        Order order = takeOrder();
         //TODO: Initialize inventory Load from Memory ( It is a Map)
-        inventory.loadInventory();
+        //inventory.loadInventory();
 
         //TODO: Display menu ( Menu - Delux Pizza & Regular along with Toppings)
         displayMenuTouser(menu);
 
         //TODO: Take order from user (Order)
-        Order order = takeOrder();
+
 
         //TODO: Validate  ( Business rules ) + check stock
         validateBusinessRules();
-
+        /*
         if (inventory.checkInventory()) {
             //TODO: place order
             placeOrder();
         }
         inventory.updateInventory();
+        */
+
         //TODO: Update the stock
 
 

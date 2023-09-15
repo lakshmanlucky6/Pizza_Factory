@@ -12,8 +12,16 @@ public class Pizza {
     private Crust crust;
     private SIZE size;
 
-    public Double cost() {
+    public Double getPizzaCost(String name,SIZE size) {
         return 0.0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public SIZE getSize() {
+        return size;
     }
 
     public Pizza(String name, TYPE type, SIZE size) {
@@ -34,11 +42,16 @@ public class Pizza {
         this.topping = topping;
     }
 
+
     public Crust getCrust() {
         return crust;
     }
 
     public void setCrust(Crust crust) {
         this.crust = crust;
+    }
+
+    public List<Topping> getToppingName() {
+        return topping;
     }
 }
