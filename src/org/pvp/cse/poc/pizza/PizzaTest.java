@@ -1,6 +1,7 @@
 
 package org.pvp.cse.poc.pizza;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.pvp.cse.poc.pizza.constants.SIZE;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
 import org.pvp.cse.poc.pizza.model.Menu;
@@ -16,7 +17,7 @@ import java.util.Scanner;//public void select(){
 public class PizzaTest {
     public static void main(String[] args) {
         System.out.println("Welcome to PizzaFactory!");
-        Menu menu = null;
+        Menu menu = new Menu();
         //TODO: Initialize inventory Load from Memory ( It is a Map)
         //inventory.loadInventory();
 
@@ -71,13 +72,14 @@ public class PizzaTest {
     }
 
     private static Order takeOrder() {
+        Order order = new Order();
         Scanner sc = new Scanner(System.in);
         System.out.println("Cook your PIZZERIA here!!");
-        while (true) {
+        //while (false) {
             //System.out.println("1.Veg\n2.Non-veg");
             System.out.print("SELECT THE TYPE ?");
 
-        }
+       // }
             /*System.out.print("SELECT THE TYPE ?");
             int input = sc.nextInt();
             switch (input) {
@@ -134,9 +136,10 @@ public class PizzaTest {
         System.out.println("ADD SIDE DISHES\n1.Cold drink (Rs 55)\n2.Mousse cake (Rs. 90)");*/
 
         //
+        return order;
     }
 
-        //return null;
+
     }
 
 /*  SIZE size = SIZE.valueOf("Medium"); // MEDIUM
