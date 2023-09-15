@@ -3,6 +3,7 @@ import org.pvp.cse.poc.pizza.constants.SIZE;
 import org.pvp.cse.poc.pizza.model.Pizza;
 import org.pvp.cse.poc.pizza.model.Side;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Inventory {
@@ -12,32 +13,32 @@ public class Inventory {
     //TODO:stock availability check
     //TODO:update stock
     //TODO:Load Stock
-    Inventory(Pizza pizza, Side side){
+    //Inventory(Pizza pizza, Side side){}
 
-    }
-
-    public boolean checkPizzaInventory(Pizza pizza,SIZE size){
-
-        if (pizzaInventory.get(pizza).get(size)!=0)
+    public boolean checkPizzaInventory(String pizza,SIZE size,Integer qty){
+        if (pizzaInventory.get(pizza).get(size) >= qty)
             return true;
         else
             return false;
     }
-    public boolean checkToppingInventory(String topping){
-        if (toppingInventory.get(topping) != 0)
-            return true;
-        else
-            return false;
-    }
-    public boolean checkSideInventory(String side){
-        if (sideInventory.get(side) != 0)
+    public boolean checkToppingInventory(String toppings){
+        if (toppingInventory.get(toppings) > 0)
             return true;
         else
             return false;
     }
 
-    public void updatePizzaInventory(Pizza pizza,SIZE size){
-         //
+    public boolean checkSideInventory(String side,Integer qty){
+        if (sideInventory.get(side) >= qty)
+            return true;
+        else
+            return false;
+    }
+
+    public void updatePizzaInventory(String pizza,SIZE size,Integer qty){
+        Map<SIZE,Integer> m1=new HashMap<>();
+        m1.put(size,pizzaInventory.get(pizza).get(size)-qty);
+        pizzaInventory.put(pizza,m1);
     }
     public void updateToppingInventory(String topping) {
         toppingInventory.put(topping,toppingInventory.get(topping)-1);
@@ -46,8 +47,10 @@ public class Inventory {
         sideInventory.put(side,sideInventory.get(side)-1);
     }
 
-    public void loadPizzaInventory(Pizza pizza,SIZE size){
-        //
+    public void loadPizzaInventory(String pizza,SIZE size,Integer qty){
+        Map<SIZE,Integer> m1=new HashMap<>();
+        m1.put(size,pizzaInventory.get(pizza).get(size)+qty);
+        pizzaInventory.put(pizza,m1);
     }
     public void loadToppingInventory(String topping,Integer qty){
         toppingInventory.put(topping,toppingInventory.get(topping)+qty);
