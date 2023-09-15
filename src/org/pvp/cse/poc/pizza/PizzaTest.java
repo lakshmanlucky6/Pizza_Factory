@@ -53,7 +53,7 @@ public class PizzaTest {
         int flag=0;
         Inventory inventory = new Inventory();
         for (Pizza pizza : pizzas) {
-            if (!inventory.checkPizzaInventory(pizza.getName(), pizza.getSize(), 1)) {
+            if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
                 System.out.println(pizza.getName() + "not available");
                 flag=1;
             }
