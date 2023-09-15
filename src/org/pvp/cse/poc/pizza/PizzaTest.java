@@ -10,12 +10,12 @@ import java.util.List;
 
 
 import javax.print.attribute.standard.Sides;
+import java.util.Map;
 import java.util.Scanner;//public void select(){
 
 public class PizzaTest {
     public static void main(String[] args) {
         System.out.println("Welcome to PizzaFactory!");
-        Inventory inventory = null;
         Menu menu = null;
         //TODO: Initialize inventory Load from Memory ( It is a Map)
         //inventory.loadInventory();
@@ -30,8 +30,8 @@ public class PizzaTest {
         validateBusinessRules();
 
         //if (inventory.checkInventory()) {
-            //TODO: place order
-            //placeOrder();
+        //TODO: place order
+        //placeOrder();
         //}
         //inventory.updateInventory();
         //TODO: Update the stock
@@ -45,17 +45,24 @@ public class PizzaTest {
         //TODO: BusinessRules deekshitha
     }
 
-    private static void placeOrder(Map<Pizza>pizza, Map<Sides>side) {
+    private static void placeOrder(List<Pizza> pizzas, List<Sides> sides) {
         // thank you
         // Reference
         //TODO: deekshitha
-        for(i:pizza.size()) {
-            if(!checkPizzaInventory(pizza.get(i), size, qty)) {
-                System.out.println(pizza+"not available");
+        int flag=0;
+        Inventory inventory = new Inventory();
+        for (Pizza pizza : pizzas) {
+            if (!inventory.checkPizzaInventory(pizza.getName(), pizza.getSize(), 1)) {
+                System.out.println(pizza.getName() + "not available");
+                flag=1;
             }
         }
-        Order o=new Order();
-        System.out.println("BILL:"+o.cost());
+        if(flag==1){
+            //asking the user
+            return;
+        }
+        Order o = new Order();
+        System.out.println("BILL:" + o.cost());
         System.out.println("Thank you");
     }
 
@@ -66,12 +73,12 @@ public class PizzaTest {
     private static Order takeOrder() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Cook your PIZZERIA here!!");
-        while(true){
+        while (true) {
             //System.out.println("1.Veg\n2.Non-veg");
             System.out.print("SELECT THE TYPE ?");
 
         }
-            System.out.print("SELECT THE TYPE ?");
+            /*System.out.print("SELECT THE TYPE ?");
             int input = sc.nextInt();
             switch (input) {
                 case 1:
@@ -124,11 +131,12 @@ public class PizzaTest {
 
         }
         System.out.println("Need Extra cheese : ");
-        System.out.println("ADD SIDE DISHES\n1.Cold drink (Rs 55)\n2.Mousse cake (Rs. 90)");
+        System.out.println("ADD SIDE DISHES\n1.Cold drink (Rs 55)\n2.Mousse cake (Rs. 90)");*/
 
-        //  }
-        return null;
+        //
     }
+
+        //return null;
     }
 
 /*  SIZE size = SIZE.valueOf("Medium"); // MEDIUM
