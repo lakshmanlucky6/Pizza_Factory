@@ -1,0 +1,5 @@
+package org.pvp.cse.poc.pizza.constants;
+
+public enum TOPPING {
+    CAPSICUM,PANEER,MUSHROOM,FRESH_TOMATO,CHICKEN_TIKKA,BARBEQUE_CHICKEN,GRILLED_CHICKEN,CHEEESE;
+}

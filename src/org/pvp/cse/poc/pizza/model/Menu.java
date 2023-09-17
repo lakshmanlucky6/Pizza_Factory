@@ -13,7 +13,7 @@ public class Menu {
   Map<String, Map<String, Double>> vegPizzaMap = new LinkedHashMap<>();
   Map<String, Map<String, Double>> nonVegPizzaMap = new LinkedHashMap<>();
 
-  Menu() {
+  public Menu() {
     Map<String, Double> cost1 = new LinkedHashMap<>();
     cost1.put("Small", 150.0);
     cost1.put("Medium", 200.0);
