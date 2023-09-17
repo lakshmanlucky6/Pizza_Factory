@@ -62,9 +62,4 @@ hs_err_pid*
 # allow maven wrapper jar
 !.mvn/wrapper/maven-wrapper.jar
 
-### Various binary documents
-*.doc
-*.docx
-*.xls
-*.xlsx
-*.pdf
+
