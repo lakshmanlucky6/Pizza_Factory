@@ -8,6 +8,7 @@ public class Inventory {
     Map<String, Map<SIZE, Integer>> pizzaInventory = new HashMap<>();
     Map<String, Integer> toppingInventory = new HashMap<>();
     Map<String, Integer> sideInventory = new HashMap<>();
+    Map<String, Integer> crustInventory = new HashMap<>();
 
     //TODO:stock availability check
     //TODO:update stock
@@ -51,6 +52,11 @@ public class Inventory {
         //loading sides inventory
         sideInventory.put("Cold drink",250);
         sideInventory.put("Mousse cake",200);
+        //loading crust inventory
+        crustInventory.put("New hand tossed", 20);
+        crustInventory.put("Wheat thin crust", 25);
+        crustInventory.put("Cheese Burst", 10);
+        crustInventory.put("Fresh pan pizza", 25);
     }
 
     public boolean checkPizza(String pizza, SIZE size, Integer qty) {
