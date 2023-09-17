@@ -1,7 +1,10 @@
 package org.pvp.cse.poc.pizza.model;
 import org.pvp.cse.poc.pizza.constants.SIZE;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Menu {
     Map <String, Map <String,Double> > veg = new LinkedHashMap<>();
