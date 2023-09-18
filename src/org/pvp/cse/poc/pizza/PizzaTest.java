@@ -3,6 +3,7 @@ package org.pvp.cse.poc.pizza;
 
 import com.sun.org.apache.xpath.internal.operations.Or;
 import org.pvp.cse.poc.pizza.constants.SIZE;
+import org.pvp.cse.poc.pizza.constants.TYPE;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
 import org.pvp.cse.poc.pizza.model.Menu;
 import org.pvp.cse.poc.pizza.model.Order;
@@ -74,10 +75,54 @@ public class PizzaTest {
     private static Order takeOrder() {
         Order order = new Order();
         Scanner sc = new Scanner(System.in);
+        List <Pizza> pizza=null;
         System.out.println("Cook your PIZZERIA here!!");
+        boolean flag=true;
+        do{
+            System.out.print("SELECT THE TYPE ?");
+            System.out.println("1.VEG 2.NON_VEG");
+
+            int i = sc.nextInt();
+            //TYPE type = TYPE.valueOf(i) ;
+            System.out.println("You have selected: " + TYPE.valueOf(i));
+            if (i == 1) {
+                Menu menu = new Menu();
+                menu.displayVegPizza();
+                String s = sc.next();
+                String name = sc.next();
+                Pizza pizza1 = new Pizza(s, TYPE.valueOf(i), SIZE.valueOfSize(name));
+                //pizza.add(pizza1);
+                System.out.println("any specification crust or toppings if any enter 1 or 0;");
+                int j = sc.nextInt();
+                if(j==1)
+                {
+                    System.out.println("for selection of crust select 1 ");
+                    int k=sc.nextInt();
+                    if(k==1)
+                    {
+                        menu.displayCrust();
+                        String crust = sc.next();
+
+                    }
+                }
+            }
+            else if (i == 2) {
+                Menu menu = new Menu();
+                menu.displayNVegPizza();
+                String s = sc.next();
+                String name = sc.next();
+                Pizza pizza1 = new Pizza(s, TYPE.valueOf(i), SIZE.valueOfSize(name));
+                pizza.add(pizza1);
+            } else {
+                System.out.println("enter correct value ");
+            }
+
+            System.out.println("Do u want to order more enter 1 for ordering else 0");
+            flag = sc.hasNextBoolean();
+        }while(flag);
         //while (false) {
             //System.out.println("1.Veg\n2.Non-veg");
-            System.out.print("SELECT THE TYPE ?");
+
 
        // }
             /*System.out.print("SELECT THE TYPE ?");
