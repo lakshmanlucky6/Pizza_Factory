@@ -1,34 +1,109 @@
-package org.pvp.cse.poc.pizza.model;
 
-import org.pvp.cse.poc.pizza.constants.SIZE;
+package org.pvp.cse.poc.pizza.model;
+import org.pvp.cse.poc.pizza.constants.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Menu {
-  Map<String, Double> vegToppingMap = new LinkedHashMap<>();
-  Map<String, Double> nonVegToppingMap = new LinkedHashMap<>();
-  Map<String, Double> crustMap = new LinkedHashMap<>();
-  Map<String, Double> sidesMap = new LinkedHashMap<>();
-  Map<String, Map<String, Double>> vegPizzaMap = new LinkedHashMap<>();
-  Map<String, Map<String, Double>> nonVegPizzaMap = new LinkedHashMap<>();
+  Map<PIZZA, Map<SIZE, Double>> vegPizzaMap = new LinkedHashMap<>();
+  Map<TOPPING, Double> vegToppingMap = new LinkedHashMap<>();
+  Map<PIZZA, Map<SIZE, Double>> nonVegPizzaMap = new LinkedHashMap<>();
+  Map<TOPPING, Double> nonVegToppingMap = new LinkedHashMap<>();
+  Map<CRUST, Double> crustMap = new LinkedHashMap<>();
+  Map<SIDE, Double> sidesMap = new LinkedHashMap<>();
+
 
   public Menu() {
-    Map<String, Double> cost1 = new LinkedHashMap<>();
-    cost1.put("Small", 150.0);
-    cost1.put("Medium", 200.0);
-    cost1.put("Large", 325.0);
-    vegPizzaMap.put("Deluxe pizza", cost1);
-    Map<String, Double> cost2 = new LinkedHashMap<>();
-    cost2.put("Small", 175.0);
-    cost2.put("Medium", 375.0);
-    cost2.put("Large", 475.0);
-    vegPizzaMap.put("Cheese and Corn", cost2);
-    Map<String, Double> cost3 = new LinkedHashMap<>();
-    cost3.put("Small", 160.0);
-    cost3.put("Medium", 290.0);
-    cost3.put("Large", 340.0);
-    vegPizzaMap.put("Panner Tikka", cost3);
+    //loading veg pizza contents
+    Map<SIZE, Double> cost = new LinkedHashMap<>();
+    cost.put(SIZE.REGULAR, 150.0);
+    cost.put(SIZE.MEDIUM, 200.0);
+    cost.put(SIZE.LARGE, 325.0);
+    vegPizzaMap.put(PIZZA.DELUXE_VEGGIE, cost);
+    cost.clear();
+    cost.put(SIZE.REGULAR, 175.0);
+    cost.put(SIZE.MEDIUM, 375.0);
+    cost.put(SIZE.LARGE, 475.0);
+    vegPizzaMap.put(PIZZA.CHEESE_AND_CORN, cost);
+    cost.clear();
+    cost.put(SIZE.REGULAR, 160.0);
+    cost.put(SIZE.MEDIUM, 290.0);
+    cost.put(SIZE.LARGE, 340.0);
+    vegPizzaMap.put(PIZZA.PANEER_TIKKA, cost);
+    cost.clear();
+
+    //loading non veg pizza contents
+    cost.put(SIZE.REGULAR, 190.0);
+    cost.put(SIZE.MEDIUM, 325.0);
+    cost.put(SIZE.LARGE, 425.0);
+    nonVegPizzaMap.put(PIZZA.NON_VEG_SUPREME, cost);
+    cost.clear();
+    cost.put(SIZE.REGULAR, 175.0);
+    cost.put(SIZE.MEDIUM, 375.0);
+    cost.put(SIZE.LARGE, 475.0);
+    nonVegPizzaMap.put(PIZZA.CHICKEN_TIKKA, cost);
+    cost.clear();
+    cost.put(SIZE.REGULAR, 220.0);
+    cost.put(SIZE.MEDIUM, 380.0);
+    cost.put(SIZE.LARGE, 525.0);
+    nonVegPizzaMap.put(PIZZA.PEPPER_BARBECUE_CHICKEN, cost);
+    cost.clear();
+
+    //loading veg toppings
+    vegToppingMap.put(TOPPING.BLACK_OLIVE, 20.0);
+    vegToppingMap.put(TOPPING.CAPSICUM, 25.0);
+    vegToppingMap.put(TOPPING.PANEER, 35.0);
+    vegToppingMap.put(TOPPING.MUSHROOM, 30.0);
+    vegToppingMap.put(TOPPING.FRESH_TOMATO, 10.0);
+
+    //loading non veg toppings
+    nonVegToppingMap.put(TOPPING.CHICKEN_TIKKA, 35.0);
+    nonVegToppingMap.put(TOPPING.BARBEQUE_CHICKEN, 45.0);
+    nonVegToppingMap.put(TOPPING.GRILLED_CHICKEN, 40.0);
+
+    //loading crust details
+    crustMap.put(CRUST.NEW_HAND_TOSSED, 25.0);
+    crustMap.put(CRUST.WHEAT_THIN_CRUST, 25.0);
+    crustMap.put(CRUST.CHEESE_BURST, 25.0);
+    crustMap.put(CRUST.FRESH_PAN_PIZZA, 25.0);
+
+    //loading sides details
+    sidesMap.put(SIDE.COLD_DRINK, 55.0);
+    sidesMap.put(SIDE.MOUSSE_CAKE, 90.0);
+  }
+
+  public String getAvailableVegPizzas() {
+    // Write code to return Name of pizza
+    Set<PIZZA>keys = vegPizzaMap.keySet();
+    String vegpizzas = keys.stream().collect(Collectors.joining(","));
+    return vegpizzas;
+  }
+
+  public String getAvailableNonVegPizzas() {
+    // Write code to return Name of non veg pizza
+    String nonvegpizzas = nonVegPizzaMap.keySet().stream().collect(Collectors.toList());
+    return nonvegpizzas;
+  }
+
+  public String getAvailableVegToppings() {
+     String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
+     return vegtoppings;
+  }
+
+  public String getAvailableNonVegToppings() {
+    String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
+    return nonvegtoppings;
+  }
+
+  public String getAvailableCrust() {
+    String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
+    return crust;
+  }
+
+  public String getAvailableSides() {
+    String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
+    return sides;
   }
 
   public double getPizzaCost(String name, SIZE size) {
@@ -45,92 +120,5 @@ public class Menu {
       cost = cost + toppingName.get(i).getToppingCost();
     }
     return cost;
-  }
-
-  String getAllVegPizzas() {
-    System.out.println("1 : Deliv, 2. 3");
-    return "";
-  }
-
-  String getAllNonPizzas() {
-    System.out.println("1 : Deliv, 2. 3");
-    return "";
-  }
-
-  public String getAvailableVegPizzas() {
-    Map<String, Map<String, Double>> veg = new LinkedHashMap<>();
-    Map<String, Double> cost1 = new LinkedHashMap<>();
-    cost1.put("Small", 150.0);
-    cost1.put("Medium", 200.0);
-    cost1.put("Large", 325.0);
-    veg.put("Deluxe pizza", cost1);
-    Map<String, Double> cost2 = new LinkedHashMap<>();
-    cost2.put("Small", 175.0);
-    cost2.put("Medium", 375.0);
-    cost2.put("Large", 475.0);
-    veg.put("Cheese and Corn", cost2);
-    Map<String, Double> cost3 = new LinkedHashMap<>();
-    cost3.put("Small", 160.0);
-    cost3.put("Medium", 290.0);
-    cost3.put("Large", 340.0);
-    veg.put("Panner Tikka", cost3);
-    // Write code to return Name of pizza
-    String collect = vegPizzaMap.keySet().stream().collect(Collectors.joining(","));
-
-    return collect;
-  }
-
-  public String displayVegTop() {
-    Map<String, Double> vegtop = new LinkedHashMap<>();
-    vegtop.put("Black olive", 20.0);
-    vegtop.put("Capsicum", 25.0);
-    vegtop.put("Paneer", 35.0);
-    vegtop.put("Mushroom", 30.0);
-    vegtop.put("Fresh tomato ", 10.0);
-    return "";
-  }
-
-  public String displayNVegPizza() {
-    Map<String, Map<String, Double>> nveg = new LinkedHashMap<>();
-    Map<String, Double> cost1 = new LinkedHashMap<>();
-    cost1.put("Small", 190.0);
-    cost1.put("Medium", 325.0);
-    cost1.put("Large", 425.0);
-    nveg.put("Non-Veg Supreme", cost1);
-    Map<String, Double> cost2 = new LinkedHashMap<>();
-    cost2.put("Small", 175.0);
-    cost2.put("Medium", 375.0);
-    cost2.put("Large", 475.0);
-    nveg.put("Chicken Tikka", cost2);
-    Map<String, Double> cost3 = new LinkedHashMap<>();
-    cost3.put("Small", 220.0);
-    cost3.put("Medium", 380.0);
-    cost3.put("Large", 525.0);
-    nveg.put("Pepper Barbeque Chicken", cost3);
-    return "";
-  }
-
-  public String displayNvegTop() {
-    Map<String, Double> nvegtop = new LinkedHashMap<>();
-    nvegtop.put("Chicken tikka", 35.0);
-    nvegtop.put("Barbeque chicken", 45.0);
-    nvegtop.put("Grilled chicken", 40.0);
-    return "";
-  }
-
-  public String displayCrust() {
-    Map<String, Double> crust = new LinkedHashMap<>();
-    crust.put("New hand tossed", 25.0);
-    crust.put("Wheat thin crust", 25.0);
-    crust.put("Cheese Burst", 25.0);
-    crust.put("Fresh pan pizza", 25.0);
-    return "";
-  }
-
-  public String displaySides() {
-    Map<String, Double> side = new LinkedHashMap<>();
-    side.put("Cold drink", 55.0);
-    side.put("Mousse cake", 90.0);
-    return "";
   }
 }
