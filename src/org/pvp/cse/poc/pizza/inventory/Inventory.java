@@ -74,6 +74,9 @@ public class Inventory {
     public boolean checkSide(SIDE side, Integer qty) {
         return sideInventory.get(side) >= qty;
     }
+    public boolean checkCrust(CRUST crust, Integer qty) {
+        return crustInventory.get(crust) >= qty;
+    }
 
     public void updatePizza(PIZZA pizza, SIZE size, Integer qty) {
         pizzaInventory.get(pizza).put(size,pizzaInventory.get(pizza).get(size)-qty);
@@ -86,6 +89,9 @@ public class Inventory {
     public void updateSide(SIDE side,Integer qty) {
         sideInventory.put(side, sideInventory.get(side) - qty);
     }
+    public void updateCrust(CRUST crust, Integer qty) {
+        crustInventory.put(crust,crustInventory.get(crust) - qty);
+    }
 
     public void addPizza(PIZZA pizza, SIZE size, Integer qty) {
         pizzaInventory.get(pizza).put(size,pizzaInventory.get(pizza).get(size)+qty);
@@ -97,5 +103,8 @@ public class Inventory {
 
     public void addSide(SIDE side, Integer qty) {
         sideInventory.put(side, sideInventory.get(side) + qty);
+    }
+    public void addCrust(CRUST crust, Integer qty) {
+        crustInventory.put(crust,crustInventory.get(crust) + qty);
     }
 }
