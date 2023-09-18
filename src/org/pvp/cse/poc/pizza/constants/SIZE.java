@@ -15,6 +15,10 @@ public enum SIZE {
     public String valueOf(){
         return this.name;
     }
+    // TODO
+    public SIZE nameOf(){
+        return null;
+    }
 }
 
 //

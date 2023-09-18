@@ -20,34 +20,36 @@ public class Menu {
     cost.put(SIZE.MEDIUM, 200.0);
     cost.put(SIZE.LARGE, 325.0);
     vegPizzaMap.put(PIZZA.DELUXE_VEGGIE, cost);
-    cost.clear();
+    //cost.clear();
+    cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 175.0);
     cost.put(SIZE.MEDIUM, 375.0);
     cost.put(SIZE.LARGE, 475.0);
     vegPizzaMap.put(PIZZA.CHEESE_AND_CORN, cost);
-    cost.clear();
+    //cost.clear();
+    cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 160.0);
     cost.put(SIZE.MEDIUM, 290.0);
     cost.put(SIZE.LARGE, 340.0);
     vegPizzaMap.put(PIZZA.PANEER_TIKKA, cost);
-    cost.clear();
+    cost = new LinkedHashMap<>();
 
     // loading non veg pizza contents
     cost.put(SIZE.REGULAR, 190.0);
     cost.put(SIZE.MEDIUM, 325.0);
     cost.put(SIZE.LARGE, 425.0);
     nonVegPizzaMap.put(PIZZA.NON_VEG_SUPREME, cost);
-    cost.clear();
+    cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 175.0);
     cost.put(SIZE.MEDIUM, 375.0);
     cost.put(SIZE.LARGE, 475.0);
     nonVegPizzaMap.put(PIZZA.CHICKEN_TIKKA, cost);
-    cost.clear();
+    cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 220.0);
     cost.put(SIZE.MEDIUM, 380.0);
     cost.put(SIZE.LARGE, 525.0);
     nonVegPizzaMap.put(PIZZA.PEPPER_BARBECUE_CHICKEN, cost);
-    cost.clear();
+    //cost.clear();
 
     // loading veg toppings
     vegToppingMap.put(TOPPING.BLACK_OLIVE, 20.0);
@@ -85,6 +87,7 @@ public class Menu {
     for (Map.Entry<PIZZA, Map<SIZE, Double>> entry : entrySet) {
       String pizza = entry.getKey().valueOf();
       builder.append(pizza); // Deluxe
+      builder.append(" "); // Deluxe
       Map<SIZE, Double> sizeMap = entry.getValue();
       Set<Map.Entry<SIZE, Double>> sizeEntrySet = sizeMap.entrySet();
       for (Map.Entry<SIZE, Double> sizeEntry : sizeEntrySet) {
@@ -94,6 +97,7 @@ public class Menu {
         builder.append(sizeName);
         builder.append(" : ");
         builder.append(sizeCost);
+        builder.append(" ");
       }
       builder.append("\n");
     }
@@ -109,23 +113,23 @@ public class Menu {
   }
 
   public String getAvailableVegToppings() {
-    String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
-    return vegtoppings;
+    //String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
+    return "vegtoppings";
   }
 
   public String getAvailableNonVegToppings() {
-    String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
-    return nonvegtoppings;
+    //String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
+    return "nonvegtoppings";
   }
 
   public String getAvailableCrust() {
-    String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
-    return crust;
+  //  String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
+    return "crust";
   }
 
   public String getAvailableSides() {
-    String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
-    return sides;
+   // String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
+    return "sides";
   }
 
   public double getPizzaCost(String name, SIZE size) {
@@ -143,4 +147,10 @@ public class Menu {
     }
     return cost;
   }
+
+/*  public static void main(String[] args){
+    Menu menu = new Menu();
+    System.out.println(
+    menu.getAvailableVegPizzas());
+  }*/
 }

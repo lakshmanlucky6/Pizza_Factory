@@ -54,10 +54,11 @@ public class PizzaTest {
     int flag = 0;
     Inventory inventory = new Inventory();
     for (Pizza pizza : pizzas) {
-      if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
+      //TODO: Lakshman will do this change
+     /* if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
         System.out.println(pizza.getName() + "not available");
         flag = 1;
-      }
+      }*/
     }
     if (flag == 1) {
       // asking the user
@@ -90,7 +91,7 @@ public class PizzaTest {
         System.out.println(menu.getAvailableVegPizzas());
         String s = sc.next();
         String name = sc.next();
-        Pizza pizza1 = new Pizza(s, TYPE.VEG, SIZE.valueOfSize(name));
+        Pizza pizza1 = new Pizza(s, TYPE.VEG, null);
         List<Topping> topings=new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
@@ -114,7 +115,7 @@ public class PizzaTest {
         System.out.println(menu.getAvailableNonVegPizzas());
         String s = sc.next();
         String name = sc.next();
-        Pizza pizza1 = new Pizza(s, TYPE.VEG, SIZE.valueOfSize(name));
+        Pizza pizza1 = new Pizza(s, TYPE.VEG, null);
         List<Topping> topings=new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
