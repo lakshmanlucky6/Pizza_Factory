@@ -75,14 +75,14 @@ public class Menu {
 
   public String getAvailableVegPizzas() {
     // Write code to return Name of pizza
-    Set<PIZZA>keys = vegPizzaMap.keySet();
-    String vegpizzas = keys.stream().collect(Collectors.joining(","));
+    //String vegpizzas = vegPizzaMap.entrySet().stream().map(PIZZA::valueOf).collect(Collectors.joining(","));
+    String vegpizzas = vegPizzaMap.entrySet().stream().map(pizzaMapEntry -> pizzaMapEntry.getKey().valueOf());
     return vegpizzas;
   }
 
   public String getAvailableNonVegPizzas() {
     // Write code to return Name of non veg pizza
-    String nonvegpizzas = nonVegPizzaMap.keySet().stream().collect(Collectors.toList());
+    String nonvegpizzas = nonVegPizzaMap.keySet().stream().map(PIZZA::valueOf).collect(Collectors.joining(","));
     return nonvegpizzas;
   }
 
