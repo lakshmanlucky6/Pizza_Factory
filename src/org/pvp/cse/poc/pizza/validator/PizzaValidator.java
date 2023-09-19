@@ -7,6 +7,9 @@ public class PizzaValidator<PIzz> implements IValidator<Pizza> {
   public void validate(Pizza pizza) throws Exception {
 
   }
+/*  public void validate(Order order) throws Exception {
+
+  }*/
 
   public void validateTopping() {
 

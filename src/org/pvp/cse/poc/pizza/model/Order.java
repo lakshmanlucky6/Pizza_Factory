@@ -2,7 +2,7 @@ package org.pvp.cse.poc.pizza.model;
 
 import java.util.List;
 
-public class Order {
+public class Order { // TODO : setter/getter access modifier
     List<Pizza> pizzas;
     List<Side> sides;
     Menu menu;

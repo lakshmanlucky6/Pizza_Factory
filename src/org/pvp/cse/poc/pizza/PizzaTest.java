@@ -8,6 +8,8 @@ import org.pvp.cse.poc.pizza.model.Menu;
 import org.pvp.cse.poc.pizza.model.Order;
 import org.pvp.cse.poc.pizza.model.Pizza;
 import org.pvp.cse.poc.pizza.model.Topping;
+import org.pvp.cse.poc.pizza.validator.IValidator;
+import org.pvp.cse.poc.pizza.validator.PizzaValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +43,10 @@ public class PizzaTest {
 
   }
 
-  private static void validateBusinessRules() {
+  private static void validateBusinessRules(Order order) throws Exception {
+    // Implement validation
+    IValidator<Pizza> pizzaIValidator = new PizzaValidator<>();
+    pizzaIValidator.validate(null);
     // Toppings
     // TODO: BusinessRules teja
     // TODO: BusinessRules deekshitha
@@ -112,7 +117,7 @@ public class PizzaTest {
           pizza.setTopping(topings);
         }
         pizzaList.add(pizza);
-      } else if (pizzaTypeInt == 2) {// pizzaTYpeInt == TYPE.NONVEG
+      } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
         System.out.println(menu.getAvailableNonVegPizzas());
         String s = sc.next();
         String name = sc.next();
