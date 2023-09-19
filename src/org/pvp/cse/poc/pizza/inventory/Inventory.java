@@ -52,7 +52,7 @@ public class Inventory {
         toppingInventory.put(TOPPING.CHICKEN_TIKKA,50);
         toppingInventory.put(TOPPING.BARBEQUE_CHICKEN,50);
         toppingInventory.put(TOPPING.GRILLED_CHICKEN,50);
-        toppingInventory.put(TOPPING.CHEEESE,50);
+        toppingInventory.put(TOPPING.CHEESE,50);
         //loading sides inventory
         sideInventory.put(SIDE.COLD_DRINK,250);
         sideInventory.put(SIDE.MOUSSE_CAKE,200);
