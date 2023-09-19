@@ -4,12 +4,10 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import org.pvp.cse.poc.pizza.constants.SIZE;
 import org.pvp.cse.poc.pizza.constants.TYPE;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
-import org.pvp.cse.poc.pizza.model.Menu;
-import org.pvp.cse.poc.pizza.model.Order;
-import org.pvp.cse.poc.pizza.model.Pizza;
-import org.pvp.cse.poc.pizza.model.Topping;
+import org.pvp.cse.poc.pizza.model.*;
 import org.pvp.cse.poc.pizza.validator.IValidator;
 import org.pvp.cse.poc.pizza.validator.PizzaValidator;
+import org.pvp.cse.poc.pizza.validator.SidesValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +45,9 @@ public class PizzaTest {
     // Implement validation
     IValidator<Pizza> pizzaIValidator = new PizzaValidator<>();
     pizzaIValidator.validate(null);
+    IValidator<Side> sidesValidator = new SidesValidator();
+    sidesValidator.validate(null);
+
     // Toppings
     // TODO: BusinessRules teja
     // TODO: BusinessRules deekshitha
