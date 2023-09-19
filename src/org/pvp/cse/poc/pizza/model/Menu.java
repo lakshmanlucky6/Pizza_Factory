@@ -20,13 +20,13 @@ public class Menu {
     cost.put(SIZE.MEDIUM, 200.0);
     cost.put(SIZE.LARGE, 325.0);
     vegPizzaMap.put(PIZZA.DELUXE_VEGGIE, cost);
-    //cost.clear();
+    // cost.clear();
     cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 175.0);
     cost.put(SIZE.MEDIUM, 375.0);
     cost.put(SIZE.LARGE, 475.0);
     vegPizzaMap.put(PIZZA.CHEESE_AND_CORN, cost);
-    //cost.clear();
+    // cost.clear();
     cost = new LinkedHashMap<>();
     cost.put(SIZE.REGULAR, 160.0);
     cost.put(SIZE.MEDIUM, 290.0);
@@ -49,7 +49,7 @@ public class Menu {
     cost.put(SIZE.MEDIUM, 380.0);
     cost.put(SIZE.LARGE, 525.0);
     nonVegPizzaMap.put(PIZZA.PEPPER_BARBECUE_CHICKEN, cost);
-    //cost.clear();
+    // cost.clear();
 
     // loading veg toppings
     vegToppingMap.put(TOPPING.BLACK_OLIVE, 20.0);
@@ -113,42 +113,39 @@ public class Menu {
   }
 
   public String getAvailableVegToppings() {
-    //String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
+    // String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
     return "vegtoppings";
   }
 
   public String getAvailableNonVegToppings() {
-    //String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
+    // String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
     return "nonvegtoppings";
   }
 
   public String getAvailableCrust() {
-  //  String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
+    //  String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
     return "crust";
   }
 
   public String getAvailableSides() {
-   // String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
+    // String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
     return "sides";
   }
 
-  public double getPizzaCost(String name, SIZE size) {
+  public double getPizzaCost(PIZZA name, SIZE size) {
+    // name.type vepizza, nonvepizza map
     return 0.0;
   }
 
-  public double getSidesCost(String name, int qty) {
+  public Double getSideCost(SIDE name, int qty) {
     return 0.0;
   }
 
-  public double getToppingCost(List<Topping> toppingName) {
-    double cost = 0.0;
-    for (int i = 0; i < toppingName.size(); i++) {
-      cost = cost + toppingName.get(i).getToppingCost();
-    }
-    return cost;
+  public Double getToppingCost(Topping toppingName) {
+    return 0.0;
   }
 
-/*  public static void main(String[] args){
+  /*  public static void main(String[] args){
     Menu menu = new Menu();
     System.out.println(
     menu.getAvailableVegPizzas());
