@@ -7,7 +7,7 @@ public  enum SIDE {
     SIDE(String name){
         this.name=name;
     }
-    String valueOf(){
+    public String valueOf(){
         return this.name;
     }
 }

@@ -75,10 +75,6 @@ public class Menu {
   }
 
   public String getAvailableVegPizzas() {
-    // Write code to return Name of pizza
-    // String vegpizzas =
-    // vegPizzaMap.entrySet().stream().map(PIZZA::valueOf).collect(Collectors.joining(","));
-    /*    String vegpizzas = vegPizzaMap.entrySet().stream().map(pizzaMapEntry -> {
     // Deluxe Veggee
     // Regular : 150 , Large : 250. */
 
@@ -121,36 +117,63 @@ public class Menu {
   }
 
   public String getAvailableVegToppings() {
-    // String vegtoppings = vegToppingMap.keySet().stream().collect(Collectors.joining(","));
-    return "vegtoppings";
+    StringBuilder builder = new StringBuilder();
+    Set<Map.Entry<TOPPING,Double>> entrySet=vegToppingMap.entrySet();
+    //builder.append("Veg Toppings :\n");
+    for(Map.Entry<TOPPING,Double> entry : entrySet){
+        builder.append(entry.getKey().valueOf()+" : "+entry.getValue()+"\n");
+    }
+    return builder.toString();
   }
 
   public String getAvailableNonVegToppings() {
-    // String nonvegtoppings = nonVegToppingMap.keySet().stream().collect(Collectors.joining(","));
-    return "nonvegtoppings";
+    StringBuilder builder = new StringBuilder();
+    Set<Map.Entry<TOPPING,Double>> entrySet=nonVegToppingMap.entrySet();
+    //builder.append("Non-Veg Toppings :\n");
+    for(Map.Entry<TOPPING,Double> entry : entrySet){
+      builder.append(entry.getKey().valueOf()+" : "+entry.getValue()+"\n");
+    }
+    return builder.toString();
   }
 
-  public String getAvailableCrust() {
-    //  String crust = crustMap.keySet().stream().collect(Collectors.joining(","));
-    return "crust";
+  public String getAvailableCrusts() {
+    StringBuilder builder = new StringBuilder();
+    Set<Map.Entry<CRUST,Double>> entrySet=crustMap.entrySet();
+    //builder.append("Crusts :\n");
+    for(Map.Entry<CRUST,Double> entry : entrySet){
+      builder.append(entry.getKey().valueOf()+" : "+entry.getValue()+"\n");
+    }
+    return builder.toString();
   }
 
   public String getAvailableSides() {
-    // String sides = sidesMap.keySet().stream().collect(Collectors.joining(","));
-    return "sides";
+    StringBuilder builder = new StringBuilder();
+    Set<Map.Entry<SIDE,Double>> entrySet=sidesMap.entrySet();
+    //builder.append("Sides :\n");
+    for(Map.Entry<SIDE,Double> entry : entrySet){
+      builder.append(entry.getKey().valueOf()+" : "+entry.getValue()+"\n");
+    }
+    return builder.toString();
   }
 
   public double getPizzaCost(PIZZA name, SIZE size) {
-    // name.type vepizza, nonvepizza map
-    return 0.0;
+     if(vegPizzaMap.containsKey(name)){
+       return vegPizzaMap.get(name).get(size);
+     }else{
+       return nonVegPizzaMap.get(name).get(size);
+     }
   }
 
-  public Double getSideCost(SIDE name, int qty) {
-    return 0.0;
+  public Double getSideCost(SIDE name, Integer qty) {
+     return sidesMap.get(name)*qty;
   }
 
-  public Double getToppingCost(Topping toppingName) {
-    return 0.0;
+  public Double getToppingCost(TOPPING toppingName) {
+    if(vegToppingMap.containsKey(toppingName)){
+      return vegToppingMap.get(toppingName);
+    }else{
+      return nonVegToppingMap.get(toppingName);
+    }
   }
 
   /*  public static void main(String[] args){

@@ -18,7 +18,7 @@ public enum TOPPING {
         this.name=name;
         this.type=type;
     }
-    String valueOf(){
+    public String valueOf(){
         return this.name+" : "+this.type;
     }
 }
