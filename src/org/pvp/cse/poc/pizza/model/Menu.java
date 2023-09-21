@@ -107,9 +107,17 @@ public class Menu {
 
   public String getAvailableNonVegPizzas() {
     // Write code to return Name of non veg pizza
-    String nonvegpizzas =
-        nonVegPizzaMap.keySet().stream().map(PIZZA::valueOf).collect(Collectors.joining(","));
-    return nonvegpizzas;
+    Set<Map.Entry<PIZZA, Map<SIZE, Double>>> entrySet=nonVegPizzaMap.entrySet();
+    StringBuilder builder = new StringBuilder();
+    for(Map.Entry<PIZZA, Map<SIZE, Double>> entry:entrySet){
+        builder.append(entry.getKey().valueOf()+"\n");
+        Set<Map.Entry<SIZE,Double>> sizeEntrySet=entry.getValue().entrySet();
+        for(Map.Entry<SIZE,Double> sizeEntry:sizeEntrySet){
+          builder.append(sizeEntry.getKey().valueOf()+" : "+sizeEntry.getValue()+"  , ");
+        }
+        builder.append("\n");
+    }
+    return builder.toString();
   }
 
   public String getAvailableVegToppings() {

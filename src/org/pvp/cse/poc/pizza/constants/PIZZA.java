@@ -13,7 +13,7 @@ public enum PIZZA { // TODO: Lakshman
     this.name=name;
     this.type=type;
   }
-  String valueOf(){
+  public String valueOf(){
     return this.name;
   }
   public PIZZA nameOf(String s) {

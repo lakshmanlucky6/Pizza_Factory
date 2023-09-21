@@ -12,7 +12,7 @@ public enum SIZE {
     }
 
     // return from plain english to ENUM
-    String valueOf(){
+    public String valueOf(){
         return this.name;
     }
     // TODO
