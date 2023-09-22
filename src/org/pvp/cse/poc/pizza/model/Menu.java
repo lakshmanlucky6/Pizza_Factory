@@ -76,14 +76,16 @@ public class Menu {
 
   public String getAvailableVegPizzas() {
     // Deluxe Veggee
-    // Regular : 150 , Large : 250. */
+    // Regular : 150 , Large : 250 , Large : 300
+    // Chicken tikka
+    // Regular : 150 , Large : 250 , Large : 300 */
 
     Set<Map.Entry<PIZZA, Map<SIZE, Double>>> entrySet = vegPizzaMap.entrySet();
     StringBuilder builder = new StringBuilder();
     for (Map.Entry<PIZZA, Map<SIZE, Double>> entry : entrySet) {
       String pizza = entry.getKey().valueOf();
       builder.append(pizza); // Deluxe
-      builder.append(" "); // Deluxe
+      builder.append(" \n"); // Deluxe
       Map<SIZE, Double> sizeMap = entry.getValue();
       Set<Map.Entry<SIZE, Double>> sizeEntrySet = sizeMap.entrySet();
       for (Map.Entry<SIZE, Double> sizeEntry : sizeEntrySet) {
@@ -93,7 +95,7 @@ public class Menu {
         builder.append(sizeName);
         builder.append(" : ");
         builder.append(sizeCost);
-        builder.append(" ");
+        builder.append(" , ");
       }
       builder.append("\n");
     }
