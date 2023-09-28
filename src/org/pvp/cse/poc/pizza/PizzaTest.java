@@ -1,23 +1,20 @@
 package org.pvp.cse.poc.pizza;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-import org.pvp.cse.poc.pizza.constants.SIZE;
 import org.pvp.cse.poc.pizza.constants.TYPE;
+import org.pvp.cse.poc.pizza.exception.ToppingException;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
 import org.pvp.cse.poc.pizza.model.*;
 import org.pvp.cse.poc.pizza.validator.IValidator;
 import org.pvp.cse.poc.pizza.validator.PizzaValidator;
-import org.pvp.cse.poc.pizza.validator.SidesValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.print.attribute.standard.Sides;
-import java.util.Map;
 import java.util.Scanner; // public void select(){
 
 public class PizzaTest {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws ToppingException {
     System.out.println("Welcome to PizzaFactory!");
     Menu menu = new Menu();
     // TODO: Initialize inventory Load from Memory ( It is a Map)
@@ -30,7 +27,7 @@ public class PizzaTest {
     Order order = takeOrder();
 
     // TODO: Validate  ( Business rules ) + check stock
-    //validateBusinessRules(order);
+    validateBusinessRules(order);
 
     // if (inventory.checkInventory()) {
     // TODO: place order
@@ -41,12 +38,18 @@ public class PizzaTest {
 
   }
 
-  private static void validateBusinessRules(Order order) throws Exception {
+  public static void validateBusinessRules(Order order) throws ToppingException {
     // Implement validation
-    IValidator<Pizza> pizzaIValidator = new PizzaValidator<>();
-    pizzaIValidator.validate(null);
-    IValidator<Side> sidesValidator = new SidesValidator();
-    sidesValidator.validate(null);
+    for (Pizza pizza : order.pizzas) {
+      IValidator<Pizza> pizzaIValidator = new PizzaValidator();
+      try {
+        pizzaIValidator.validate(pizza);
+      } catch (Exception e) {
+        throw new ToppingException(e.getMessage());
+      }finally{
+        System.out.println("cleanup");
+      }
+    }
 
     // Toppings
     // TODO: BusinessRules teja
@@ -61,7 +64,7 @@ public class PizzaTest {
     Inventory inventory = new Inventory();
     for (Pizza pizza : pizzas) {
       // TODO: Lakshman will do this change
-       if (!inventory.checkPizza(, pizza.get, 1)) {
+      if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
         System.out.println(pizza.getName() + "not available");
         flag = 1;
       }
@@ -98,7 +101,7 @@ public class PizzaTest {
       if (pizzaTypeInt == 1) { // pizzaTYpeInt == TYPE.VEG
         System.out.println(menu.getAvailableVegPizzas());
         String pizzaname = sc.next();
-        pizza = new Pizza(pizzaname, TYPE.VEG,size);
+       // pizza = new Pizza(pizzaname, TYPE.VEG, null);
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
@@ -114,14 +117,14 @@ public class PizzaTest {
           String top = sc.next();
           Topping t = new Topping(top, TYPE.VEG);
           topings.add(t);
-          pizza.setTopping(topings);
+          pizza.setToppings(topings);
         }
         pizzaList.add(pizza);
       } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
         System.out.println(menu.getAvailableNonVegPizzas());
-        //String s = sc.next();
+        // String s = sc.next();
         String pizzaname = sc.next();
-        pizza = new Pizza(pizzaname, TYPE.NON_VEG, null);
+        //pizza = new Pizza(pizzaname, TYPE.NON_VEG, null);
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
@@ -137,7 +140,7 @@ public class PizzaTest {
           String top = sc.next();
           Topping t = new Topping(top, TYPE.VEG);
           topings.add(t);
-          pizza.setTopping(topings);
+          pizza.setToppings(topings);
         }
         pizzaList.add(pizza);
       } else {

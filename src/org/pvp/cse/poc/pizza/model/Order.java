@@ -3,8 +3,8 @@ package org.pvp.cse.poc.pizza.model;
 import java.util.List;
 
 public class Order { // TODO : setter/getter access modifier
-    List<Pizza> pizzas;
-    List<Side> sides;
+    public List<Pizza> pizzas;
+    public List<Side> sides;
     Menu menu;
     public double cost(){
         double costs=0.0;

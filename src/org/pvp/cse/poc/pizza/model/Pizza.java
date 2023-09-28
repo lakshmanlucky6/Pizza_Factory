@@ -10,7 +10,7 @@ import java.util.List;
 public class Pizza {
     private final PIZZA name;
     private TYPE type;
-    private List<Topping> topping;
+    private List<Topping> toppings;
     private Crust crust;
     private SIZE size;
 
@@ -29,6 +29,8 @@ public class Pizza {
     public Pizza(PIZZA name, TYPE type, SIZE size) {
         this.name = name;
         this.crust = new Crust(CRUST.WHEAT_THIN_CRUST);
+        this.type=type;
+        this.size = size;
     }
 
     public Pizza(PIZZA name, TYPE type, Crust crust) {
@@ -38,12 +40,12 @@ public class Pizza {
         //this.type = type;
     }
 
-    public List<Topping> getTopping() {
-        return topping;
+    public List<Topping> getToppings() {
+        return toppings;
     }
 
-    public void setTopping(List<Topping> topping) {
-        this.topping = topping;
+    public void setToppings(List<Topping> toppings) {
+        this.toppings = toppings;
     }
 
 
@@ -56,6 +58,18 @@ public class Pizza {
     }
 
     public List<Topping> getToppingName() {
-        return topping;
+        return toppings;
+    }
+
+    public TYPE getType() {
+        return type;
+    }
+
+    public void setType(TYPE type) {
+        this.type = type;
+    }
+
+    public void setSize(SIZE size) {
+        this.size = size;
     }
 }
