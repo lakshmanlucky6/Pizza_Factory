@@ -1,7 +1,5 @@
 package org.pvp.cse.poc.pizza.constants;
 
-import jdk.nashorn.internal.runtime.regexp.joni.ast.StringNode;
-
 public enum TOPPING {
     BLACK_OLIVE("Black olive",TYPE.VEG),
     CAPSICUM("Capsicum",TYPE.VEG),
@@ -19,6 +17,30 @@ public enum TOPPING {
         this.type=type;
     }
     public String valueOf(){
-        return this.name+" : "+this.type;
+        return name;
+    }
+    public static TOPPING nameOf(String toppingName){
+        switch (toppingName) {
+            case "Black olive":
+                return BLACK_OLIVE;
+            case "Capsicum":
+                return CAPSICUM;
+            case "Paneer":
+                return PANEER;
+            case "Mushroom":
+                return MUSHROOM;
+            case "Fresh tomato":
+                return FRESH_TOMATO;
+            case "Chicken tikka":
+                return CHICKEN_TIKKA;
+            case "Barbeque chicken":
+                return BARBEQUE_CHICKEN;
+            case "Grilled chicken":
+                return GRILLED_CHICKEN;
+            case "Cheese":
+                return CHEESE;
+            default:
+                return null; /* throw exeption -> toppingName not exist */
+        }
     }
 }

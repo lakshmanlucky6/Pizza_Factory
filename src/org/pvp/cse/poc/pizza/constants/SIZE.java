@@ -16,8 +16,17 @@ public enum SIZE {
         return this.name;
     }
     // TODO
-    public static SIZE nameOf(String size){
-        return null;
+    public static SIZE nameOf(String sizeName){
+        switch (sizeName) {
+            case "Regular":
+                return REGULAR;
+            case "Medium":
+                return MEDIUM;
+            case "Large":
+                return LARGE;
+            default:
+                return null; /* throw exeption -> sizeName not exist */
+        }
     }
 }
 

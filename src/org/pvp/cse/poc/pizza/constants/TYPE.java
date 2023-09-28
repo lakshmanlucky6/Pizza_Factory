@@ -10,12 +10,14 @@ public enum TYPE {
     String valueOf(){
         return this.name;
     }
-    // return from plain english to ENUM
-    public TYPE valueOf(int i){
-        if(i==1){
-            return TYPE.VEG;
-        }else {
-            return TYPE.NON_VEG;
+    public static TYPE nameOf(String typeName){
+        switch (typeName) {
+            case "Veg":
+                return VEG;
+            case "Non-Veg":
+                return NON_VEG;
+            default:
+                return null; /* throw exeption -> typeName not exist */
         }
     }
 }
