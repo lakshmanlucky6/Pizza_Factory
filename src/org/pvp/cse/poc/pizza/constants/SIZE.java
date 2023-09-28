@@ -16,7 +16,7 @@ public enum SIZE {
         return this.name;
     }
     // TODO
-    public SIZE nameOf(){
+    public static SIZE nameOf(String size){
         return null;
     }
 }

@@ -16,8 +16,8 @@ public enum PIZZA { // TODO: Lakshman
   public String valueOf(){
     return this.name;
   }
-  public PIZZA nameOf(String s) {
-    if (s.equals("Deluxe Pizza")) {
+  public static PIZZA nameOf(String s) {
+    if (s.equals("Deluxe Veggie")) {
       return DELUXE_VEGGIE;
     } // TODO: for ALL
     return null;
