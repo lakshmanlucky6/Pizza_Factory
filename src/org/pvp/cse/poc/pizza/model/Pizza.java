@@ -8,7 +8,7 @@ import org.pvp.cse.poc.pizza.constants.TYPE;
 import java.util.List;
 
 public class Pizza {
-    private final PIZZA name;
+    private PIZZA name;
     private TYPE type;
     private List<Topping> toppings;
     private Crust crust;

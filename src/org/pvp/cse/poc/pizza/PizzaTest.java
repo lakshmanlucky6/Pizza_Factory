@@ -1,9 +1,6 @@
 package org.pvp.cse.poc.pizza;
 
-import org.pvp.cse.poc.pizza.constants.CRUST;
-import org.pvp.cse.poc.pizza.constants.PIZZA;
-import org.pvp.cse.poc.pizza.constants.SIZE;
-import org.pvp.cse.poc.pizza.constants.TYPE;
+import org.pvp.cse.poc.pizza.constants.*;
 import org.pvp.cse.poc.pizza.exception.ToppingException;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
 import org.pvp.cse.poc.pizza.model.*;
@@ -121,7 +118,7 @@ public class PizzaTest {
         if (toppingInt == 1) {
           System.out.println(menu.getAvailableVegToppings());
           String top = sc.next();
-          Topping t = new Topping(top, TYPE.VEG);
+          Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
           toppings.add(t);
           pizza.setToppings(toppings);
         }
@@ -144,7 +141,7 @@ public class PizzaTest {
         if (toppingInt == 1) {
           System.out.println(menu.getAvailableNonVegToppings());
           String top = sc.next();
-          Topping t = new Topping(top, TYPE.VEG);
+          Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
           topings.add(t);
           pizza.setToppings(topings);
         }
