@@ -30,7 +30,7 @@ public class PizzaTest {
     Order order = takeOrder();
 
     // TODO: Validate  ( Business rules ) + check stock
-    validateBusinessRules();
+    //validateBusinessRules(order);
 
     // if (inventory.checkInventory()) {
     // TODO: place order
@@ -61,10 +61,10 @@ public class PizzaTest {
     Inventory inventory = new Inventory();
     for (Pizza pizza : pizzas) {
       // TODO: Lakshman will do this change
-      /* if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
+       if (!inventory.checkPizza(, pizza.get, 1)) {
         System.out.println(pizza.getName() + "not available");
         flag = 1;
-      }*/
+      }
     }
     if (flag == 1) {
       // asking the user
@@ -97,20 +97,19 @@ public class PizzaTest {
       // System.out.println("You have selected: " + TYPE.valueOf(pizzaTypeInt));
       if (pizzaTypeInt == 1) { // pizzaTYpeInt == TYPE.VEG
         System.out.println(menu.getAvailableVegPizzas());
-        String s = sc.next();
-        String name = sc.next();
-        pizza = new Pizza(s, TYPE.VEG, null);
+        String pizzaname = sc.next();
+        pizza = new Pizza(pizzaname, TYPE.VEG,size);
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
-        int j = sc.nextInt();
-        if (j == 1) {
-          System.out.println(menu.getAvailableCrust());
+        int crustInt = sc.nextInt();
+        if (crustInt == 1) {
+          System.out.println(menu.getAvailableCrusts());
           String crust = sc.next();
         }
         System.out.println("any specification toppings if any enter 1 or 0;");
-        int k = sc.nextInt();
-        if (k == 1) {
+        int toppingInt = sc.nextInt();
+        if (toppingInt == 1) {
           System.out.println(menu.getAvailableVegToppings());
           String top = sc.next();
           Topping t = new Topping(top, TYPE.VEG);
@@ -120,20 +119,20 @@ public class PizzaTest {
         pizzaList.add(pizza);
       } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
         System.out.println(menu.getAvailableNonVegPizzas());
-        String s = sc.next();
-        String name = sc.next();
-        pizza = new Pizza(s, TYPE.NON_VEG, null);
+        //String s = sc.next();
+        String pizzaname = sc.next();
+        pizza = new Pizza(pizzaname, TYPE.NON_VEG, null);
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
-        int j = sc.nextInt();
-        if (j == 1) {
-          System.out.println(menu.getAvailableCrust());
+        int crustInt = sc.nextInt();
+        if (crustInt == 1) {
+          System.out.println(menu.getAvailableCrusts());
           String crust = sc.next(); // create crust and assign
         }
         System.out.println("any specification toppings if any enter 1 or 0;");
-        int k = sc.nextInt();
-        if (k == 1) {
+        int toppingInt = sc.nextInt();
+        if (toppingInt == 1) {
           System.out.println(menu.getAvailableNonVegToppings());
           String top = sc.next();
           Topping t = new Topping(top, TYPE.VEG);
