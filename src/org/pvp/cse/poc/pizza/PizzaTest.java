@@ -73,7 +73,7 @@ public class PizzaTest {
       // asking the user
       return;
     }
-    Order o = new Order();
+    Order o = new Order(//list of pizza,list of sides);
     System.out.println("BILL:" + o.cost()); // User Menu to get the total cost
     System.out.println("Thank you");
   }

@@ -17,8 +17,7 @@ public class Topping {
     public TYPE getType() {
         return type;
     }
-
-    public double getToppingCostIndividually() {
+   /* public double getToppingCostIndividually() {
         return new Menu().getToppingCost(name);
-    }
+    }*/
 }

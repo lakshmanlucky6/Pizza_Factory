@@ -28,17 +28,17 @@ public class Pizza {
 
     public Pizza(PIZZA name, TYPE type, SIZE size) {
         this.name = name;
-        this.crust = new Crust(CRUST.WHEAT_THIN_CRUST);
+        //this.crust = new Crust(CRUST.WHEAT_THIN_CRUST);
         this.type=type;
         this.size = size;
     }
 
-    public Pizza(PIZZA name, TYPE type, Crust crust) {
+    /*public Pizza(PIZZA name, TYPE type, Crust crust) {
         this.name = name;
         this.type=type;
-        this.crust=crust;
+        //this.crust=crust;
         //this.type = type;
-    }
+    }*/
 
     public List<Topping> getToppings() {
         return toppings;
@@ -47,8 +47,6 @@ public class Pizza {
     public void setToppings(List<Topping> toppings) {
         this.toppings = toppings;
     }
-
-
     public Crust getCrust() {
         return crust;
     }
@@ -57,18 +55,20 @@ public class Pizza {
         this.crust = crust;
     }
 
+    /*
     public List<Topping> getToppingName() {
         return toppings;
     }
+    */
 
     public TYPE getType() {
         return type;
     }
 
+    /*
     public void setType(TYPE type) {
         this.type = type;
-    }
-
+    }*/
     public void setSize(SIZE size) {
         this.size = size;
     }
