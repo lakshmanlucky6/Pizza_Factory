@@ -6,6 +6,12 @@ public class Order { // TODO : setter/getter access modifier
     public List<Pizza> pizzas;
     public List<Side> sides;
     Menu menu;
+
+    public Order(List<Pizza> pizzas, List<Side> sides) {
+        this.pizzas = pizzas;
+        this.sides = sides;
+    }
+
     public double cost(){
         double costs=0.0;
         for(int i=0;i<pizzas.size();i++){

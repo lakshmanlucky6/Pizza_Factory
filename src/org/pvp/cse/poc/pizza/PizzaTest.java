@@ -18,7 +18,6 @@ public class PizzaTest {
     System.out.println("Welcome to PizzaFactory!");
     Menu menu = new Menu();
     // TODO: Initialize inventory Load from Memory ( It is a Map)
-    // inventory.loadInventory();
 
     // TODO: Display menu ( Menu - Delux Pizza & Regular along with Toppings)
     displayMenuTouser(menu);
@@ -29,11 +28,9 @@ public class PizzaTest {
     // TODO: Validate  ( Business rules ) + check stock
     validateBusinessRules(order);
 
-    // if (inventory.checkInventory()) {
     // TODO: place order
     placeOrder(order);
-    // }
-    // inventory.updateInventory();
+
     // TODO: Update the stock
 
   }
@@ -73,13 +70,13 @@ public class PizzaTest {
       // asking the user
       return;
     }
-    Order o = new Order(//list of pizza,list of sides);
+    Order o = new Order();(//list of pizza,list of sides);
     System.out.println("BILL:" + o.cost()); // User Menu to get the total cost
     System.out.println("Thank you");
   }
 
   private static void displayMenuTouser(Menu menu) {
-    System.out.println();
+    System.out.println("Displaying all the items");
   }
 
   public static Order takeOrder() {
@@ -157,19 +154,3 @@ public class PizzaTest {
   }
 }
 
-/*  SIZE size = SIZE.valueOf("Medium"); // MEDIUM
-Pizza p = new Pizza("","",size);
-SIZE s = SIZE.MEDIUM;
- System.out.println(s);*/
-    // PreparePizza (10 units of work)
-    // preparedough(){
-    //
-    // } - unit //verify it is working as expected(function)
-    // prepare crust()
-    // Add sou, chilly
-    // Add vegs/non veg
-    // Bake it()
-    // Ovenize()
-
-    // Maven deploy code lifecycle compile test => pizza.jar
-    // Jar
