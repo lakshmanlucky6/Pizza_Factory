@@ -1,6 +1,7 @@
 package org.pvp.cse.poc.pizza;
 
 import org.pvp.cse.poc.pizza.constants.*;
+import org.pvp.cse.poc.pizza.cost.CostCalculator;
 import org.pvp.cse.poc.pizza.exception.ToppingException;
 import org.pvp.cse.poc.pizza.inventory.Inventory;
 import org.pvp.cse.poc.pizza.model.*;
@@ -54,6 +55,7 @@ public class PizzaTest {
   }
 
   private static void placeOrder(Order order) {
+    CostCalculator costCalculator = new CostCalculator(order);
     // thank you
     // Reference
     // TODO: deekshitha
@@ -70,8 +72,8 @@ public class PizzaTest {
       // asking the user
       return;
     }
-    Order o = new Order();(//list of pizza,list of sides);
-    System.out.println("BILL:" + o.cost()); // User Menu to get the total cost
+    Order o = new Order();
+    System.out.println("BILL:" + costCalculator.cost()); // User Menu to get the total cost
     System.out.println("Thank you");
   }
 
@@ -153,4 +155,3 @@ public class PizzaTest {
     return order;
   }
 }
-
