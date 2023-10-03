@@ -138,6 +138,7 @@ public class PizzaTest {
         if (crustInt == 1) {
           System.out.println(menu.getAvailableCrusts());
           String crust = sc.next(); // create crust and assign
+          pizza.setCrust(new Crust(CRUST.nameOf(crust)));
         }
         System.out.println("any specification toppings if any enter 1 or 0;");
         int toppingInt = sc.nextInt();
