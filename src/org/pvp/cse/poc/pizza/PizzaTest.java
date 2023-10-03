@@ -45,7 +45,7 @@ public class PizzaTest {
       } catch (Exception e) {
         throw new ToppingException(e.getMessage());
       } finally {
-        System.out.println("cleanup");
+        System.out.println("in finally");
       }
     }
 
@@ -85,7 +85,7 @@ public class PizzaTest {
     Menu menu = new Menu();
     Order order = new Order();
     Scanner sc = new Scanner(System.in);
-    List<Pizza> pizzaList = null; // create object and assign
+    List<Pizza> pizzaList = new ArrayList<>(); // create object and assign
     Pizza pizza = null;
     System.out.println("Cook your PIZZERIA here!!");
     boolean flag = true;
@@ -98,18 +98,22 @@ public class PizzaTest {
       // TYPE type = TYPE.valueOf(pizzaTypeInt) ;
       // System.out.println("You have selected: " + TYPE.valueOf(pizzaTypeInt));
       if (pizzaTypeInt == 1) { // pizzaTYpeInt == TYPE.VEG
-        System.out.println(menu.getAvailableVegPizzas());
-        String pizzaName = sc.next();
-        String size = sc.next();
+        System.out.print(menu.getAvailableVegPizzas());
+        sc.nextLine();
+        System.out.print("Enter Pizza - ");
+        String pizzaName = sc.nextLine();
+        System.out.print("Enter Size - ");
+        String size = sc.nextLine();
         pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.LARGE.nameOf(size));
         List<Topping> toppings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust toppings if any enter 1 or 0;");
         int crustInt = sc.nextInt();
         if (crustInt == 1) {
-          System.out.println(menu.getAvailableCrusts());
-          String crust = sc.next();
-          pizza.setCrust(new Crust(CRUST.valueOf(crust)));
+          System.out.print(menu.getAvailableCrusts());
+          sc.nextLine();
+          String crust = sc.nextLine();
+          pizza.setCrust(new Crust(CRUST.nameOf(crust)));
         }
         System.out.println("any specification toppings if any enter 0 or more ;");
         int toppingInt = sc.nextInt();
@@ -148,6 +152,7 @@ public class PizzaTest {
       } else {
         System.out.println("enter correct value ");
       }
+      order.pizzas = pizzaList;
 
       System.out.println("Do u want to order more enter 1 for ordering else 0");
       flag = sc.hasNextBoolean();
