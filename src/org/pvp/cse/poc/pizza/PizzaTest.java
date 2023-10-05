@@ -68,6 +68,7 @@ public class PizzaTest {
       // asking the user ,better to use exceptions handling
       return;
     }
+
     boolean sidesAvailable = true;
     for (Side side : order.sides) {
       if (!inventory.checkSide(side.getName(), side.getQty())) {
@@ -80,7 +81,7 @@ public class PizzaTest {
       // asking the user ,better to use exceptions handling
       return;
     }
-
+    //update the inventory here
     System.out.println("BILL:" + order.cost()); // User Menu to get the total cost
     System.out.println("------------Thank you------------");
   }
@@ -88,76 +89,112 @@ public class PizzaTest {
   private static void displayMenuTouser(Menu menu) {
     System.out.println("Displaying all the items");
   }
-
+  private static Pizza collectPizza(Menu menu){
+    Scanner sc=new Scanner(System.in);
+    Pizza pizza;
+    System.out.print("SELECT THE TYPE ? ");
+    // TODO : Deekshi use TYPE enum
+    System.out.println("Veg or Non-Veg");
+    String pizzaTypeStringName = sc.nextLine();
+    String pizzaName;
+    String size;
+    TYPE pizzaTypeEnumName = TYPE.nameOf(pizzaTypeStringName);// change name =>
+    if (pizzaTypeEnumName == TYPE.VEG) { // pizzaTypeInt == TYPE.VEG
+      System.out.print(menu.getAvailableVegPizzas());
+      System.out.println("Enter the pizza name ");
+      pizzaName = sc.nextLine();
+      System.out.println("Enter the size Regular Medium Large");
+      size = sc.next();
+      pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.nameOf(size));
+    } else {
+      System.out.println(menu.getAvailableNonVegToppings());
+      pizzaName = sc.next();
+      size = sc.next();
+      pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.NON_VEG, SIZE.nameOf(size));
+    }
+    return pizza;
+  }
+  private static Crust collectCrust(Menu menu){
+    Scanner sc=new Scanner(System.in);
+    String crust;
+    CRUST crustEnumName=null;
+    System.out.println("any specification crust required  true->yes  false->no");
+    boolean crustNeed=sc.nextBoolean();
+    if (crustNeed) {      /* mandatory or not */
+      System.out.print(menu.getAvailableCrusts());
+      System.out.println("Enter your crust name");
+      sc.nextLine();
+      crust = sc.nextLine();
+      crustEnumName=CRUST.nameOf(crust);
+    }
+    return new Crust(crustEnumName);
+  }
+  private static List<Topping> collectToppings(Menu menu){
+    Scanner sc=new Scanner(System.in);
+    List<Topping> toppingsList = new ArrayList<>();
+    System.out.println("any specification toppings if any enter true->yes or false->no ;");
+    //TODO: How to read boolean values form user to boolean variables
+    boolean toppingNeedStatus = sc.nextBoolean();
+    TYPE toppingTypeName;
+    TOPPING toppingName;
+    Topping topping;
+    while (toppingNeedStatus) {
+      System.out.println("VEG or NON_VEG");
+      String toppingTypeStringName = sc.next();
+      toppingTypeName = TYPE.nameOf(toppingTypeStringName);
+      if (toppingTypeName == TYPE.VEG) {
+        System.out.println(menu.getAvailableVegToppings());
+      } else {
+        System.out.println(menu.getAvailableNonVegToppings());
+      }
+      sc.nextLine();
+      toppingName = TOPPING.nameOf(sc.nextLine());
+      topping = new Topping(toppingName, toppingTypeName);
+      toppingsList.add(topping);
+      System.out.println("Do you need one more topping true->yes , false->no");
+      toppingNeedStatus = sc.nextBoolean();
+    }
+    return toppingsList;
+  }
+  private static List<Side> collectSides(Menu menu){
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Any sides required : ");
+    boolean sidesNeed=sc.nextBoolean();
+    List<Side> sidesList=new ArrayList<>();
+    while (sidesNeed){
+      System.out.println(menu.getAvailableSides());
+      System.out.println("Enter the Side name");
+      SIDE sideName=SIDE.nameOf(sc.nextLine());
+      System.out.println("Enter the Quantity for side :");
+      int sideQty=sc.nextInt();
+      Side newSide=new Side(sideName,sideQty);
+      sidesList.add(newSide);
+      System.out.println("Any sides required : ");
+      sidesNeed=sc.nextBoolean();
+    }
+    return sidesList;
+  }
   public static Order takeOrder() {
     Menu menu = new Menu();
     Order order = new Order();
     Scanner sc = new Scanner(System.in);
-    List<Pizza> pizzaList = null; // create object and assign
-    Pizza pizza;
+    List<Pizza> pizzaList = new ArrayList<>(); // create object and assign
     System.out.println("Cook your PIZZERIA here!!");
-    int needMore;
+    boolean needMore=true;
     do {
-      System.out.print("SELECT THE TYPE ? ");
-      // TODO : Deekshi use TYPE enum
-      System.out.println("Veg or Non-Veg");
-      String pizzaTypeStringName = sc.nextLine();
-      String pizzaName;
-      String size;
-      TYPE pizzaTypeEnumName = TYPE.nameOf(pizzaTypeStringName);// change name =>
-      if (pizzaTypeEnumName == TYPE.VEG) { // pizzaTypeInt == TYPE.VEG
-        System.out.println(menu.getAvailableVegPizzas());
-        System.out.println("Enter the pizza name ");
-        pizzaName = sc.nextLine();
-        System.out.println("Enter the size Regular Medium Large");
-        size = sc.next();
-        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.nameOf(size));
-      } else {
-        System.out.println(menu.getAvailableNonVegToppings());
-        pizzaName = sc.next();
-        size = sc.next();
-        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.NON_VEG, SIZE.nameOf(size));
-      }
-      System.out.println("any specification crust required 1 -> yes  0->no");
-
-      int crustNeed = sc.nextInt();
-      if (crustNeed == 1) {      /* mandatory or not */
-        System.out.println(menu.getAvailableCrusts());
-        String crust = sc.nextLine();
-        pizza.setCrust(new Crust(CRUST.valueOf(crust)));
-      }
-
-      List<Topping> toppingsList = new ArrayList<>();
-      System.out.println("any specification toppings if any enter 0 or more ;");
-      //TODO: How to read boolean values form user to boolean variables
-      int toppingNeedStatus = sc.nextInt();
-      TYPE toppingTypeName;
-      TOPPING toppingName;
-      Topping topping;
-
-      while (toppingNeedStatus != 0) {
-        System.out.println("VEG or NON_VEG");
-        String toppingTypeStringName = sc.next();
-        toppingTypeName = TYPE.nameOf(toppingTypeStringName);
-        if (toppingTypeName == TYPE.VEG) {
-          System.out.println(menu.getAvailableVegToppings());
-        } else {
-          System.out.println(menu.getAvailableNonVegToppings());
-        }
-          toppingName = TOPPING.nameOf(sc.next());
-          topping = new Topping(toppingName, toppingTypeName);
-          toppingsList.add(topping);
-
-          System.out.println("Do you need one more topping 1->yes , 0->no");
-        toppingNeedStatus = sc.nextInt();
-      }
+      Pizza pizza=collectPizza(menu);
+      Crust crust=collectCrust(menu);
+      pizza.setCrust(crust);
+      List<Topping> toppingsList=collectToppings(menu);
       pizza.setToppings(toppingsList);
       pizzaList.add(pizza);
-      System.out.println("Enter 1 to add another pizza,0 to place your order");
-      needMore=sc.nextInt();
-    }while(needMore==1);
+      System.out.println("Enter true to add another pizza,false to place your order");
+      needMore=sc.nextBoolean();
+      //TODO:boolean
+    }while(needMore);
+
     order.pizzas=pizzaList;
-    order.sides=null;
+    order.sides= collectSides(menu);
     return order;
   }
 }

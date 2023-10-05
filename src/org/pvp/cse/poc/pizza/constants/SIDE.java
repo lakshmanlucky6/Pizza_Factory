@@ -7,10 +7,13 @@ public  enum SIDE {
     SIDE(String name){
         this.name=name;
     }
+
+
+
     public String valueOf(){
         return this.name;
     }
-    public SIDE nameOf(String sideName){
+    public static SIDE nameOf(String sideName){
         switch (sideName) {
             case "Cold drink":
                 return COLD_DRINK;

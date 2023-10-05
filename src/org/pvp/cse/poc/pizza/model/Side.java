@@ -6,7 +6,7 @@ public class Side {
     private SIDE name;
     private int qty;
 
-    Side(SIDE name, int qty){
+    public Side(SIDE name, int qty){
         this.name=name;
         this.qty=qty;
     }
