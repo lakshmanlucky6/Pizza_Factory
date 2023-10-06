@@ -29,10 +29,18 @@ public class PizzaValidator implements IValidator<Pizza> {
   }
 
   // Teja  - Non--vegetarian pizza cannot have paneer topping.
-  public void val2(Pizza pizza) throws ToppingException {}
+  public void val2(Pizza pizza) throws ToppingException {
+    if (TYPE.VEG.equals(pizza.getType())) {
+      if (pizza.getToppings().stream().anyMatch(topping -> TYPE.VEG.equals("Paneer"))) {
+        throw new ToppingException("Non-vegetarian pizza cannot have paneer topping");
+      }
+    }
+  }
 
   // Deekshitha Only one type of crust can be selected for any pizza.
-  public void val3(Pizza pizza) throws ToppingException {}
+  public void val3(Pizza pizza) throws ToppingException {
+
+  }
 
   // Sahithi You can add only one of the non--veg toppings in non--vegetarian pizza
   public void val4(Pizza pizza) throws ToppingException {}
