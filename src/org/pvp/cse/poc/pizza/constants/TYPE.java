@@ -7,7 +7,7 @@ public enum TYPE {
     TYPE(String name){
         this.name=name;
     }
-    String valueOf(){
+    public String valueOf(){
         return this.name;
     }
     public static TYPE nameOf(String typeName){

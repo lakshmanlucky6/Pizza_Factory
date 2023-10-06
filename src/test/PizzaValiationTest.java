@@ -16,12 +16,7 @@ import java.util.Collections;
 public class PizzaValiationTest {
 
   public static void main(String[] args) throws ToppingException {
-    try{
-
     validateNonvegTopTestThrowException();
-    }catch (ToppingException t){
-      System.out.println(t.getMessage());
-    }
     validateNonvegTopTestPostive();
 
     // val2neg();
@@ -32,7 +27,7 @@ public class PizzaValiationTest {
   private static void validateNonvegTopTestPostive() throws ToppingException {
     Order order = new Order();
     Pizza pizza = new Pizza(PIZZA.DELUXE_VEGGIE, TYPE.VEG, SIZE.MEDIUM);
-    Topping vegTopping = new Topping(TOPPING.PANEER, TYPE.VEG);
+    Topping vegTopping = new Topping(TOPPING.CAPSICUM, TYPE.VEG);
     pizza.setToppings(Collections.singletonList(vegTopping));
     order.pizzas = Arrays.asList(pizza);
     PizzaTest.validateBusinessRules(order);

@@ -7,6 +7,11 @@ public class Crust {
     public Crust(CRUST crustName) {
         this.crustName=crustName;
     }
+
+    public void setCrustName(CRUST crustName) {
+        this.crustName = crustName;
+    }
+
     public CRUST getCrustName() {
         return crustName;
     }
