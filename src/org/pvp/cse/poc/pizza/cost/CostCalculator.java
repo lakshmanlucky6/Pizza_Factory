@@ -3,8 +3,8 @@ package org.pvp.cse.poc.pizza.cost;
 import org.pvp.cse.poc.pizza.model.*;
 
 public class CostCalculator {
-  Menu menu = null;
-  Order order = null;
+  Menu menu = new Menu();
+  Order order = new Order();
 
   public CostCalculator(Order order) {
     this.order = order;

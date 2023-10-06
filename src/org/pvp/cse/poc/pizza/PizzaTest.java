@@ -69,7 +69,7 @@ public class PizzaTest {
       }
     }
     if (flag == 1) {
-      // asking the user
+      System.out.println("Check and replace the order");
       return;
     }
     Order o = new Order();
@@ -115,9 +115,8 @@ public class PizzaTest {
           String crust = sc.nextLine();
           pizza.setCrust(new Crust(CRUST.nameOf(crust)));
         }
-        System.out.println("any specification toppings if any enter 0 or more ;");
+        System.out.println("any specification toppings if any enter 1 or 0 ");
         int toppingInt = sc.nextInt();
-        // for
         if (toppingInt == 1) {
           System.out.println(menu.getAvailableVegToppings());
           String top = sc.next();
