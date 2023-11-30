@@ -121,8 +121,7 @@ public class PizzaTest {
           System.out.println(menu.getAvailableVegToppings());
           String top = sc.next();
           Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
-          toppings.add(t);
-          pizza.setToppings(toppings);
+          pizza.addTopping(t);
         }
         pizzaList.add(pizza);
       } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
@@ -145,8 +144,7 @@ public class PizzaTest {
           System.out.println(menu.getAvailableNonVegToppings());
           String top = sc.next();
           Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
-          topings.add(t);
-          pizza.setToppings(topings);
+          pizza.addTopping(t);
         }
         pizzaList.add(pizza);
       } else {

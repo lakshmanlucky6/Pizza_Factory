@@ -28,7 +28,7 @@ public class PizzaValiationTest {
     Order order = new Order();
     Pizza pizza = new Pizza(PIZZA.DELUXE_VEGGIE, TYPE.VEG, SIZE.MEDIUM);
     Topping vegTopping = new Topping(TOPPING.CAPSICUM, TYPE.VEG);
-    pizza.setToppings(Collections.singletonList(vegTopping));
+    pizza.addTopping(vegTopping);
     order.pizzas = Arrays.asList(pizza);
     PizzaTest.validateBusinessRules(order);
     System.out.println("place order continues .............");
@@ -38,7 +38,7 @@ public class PizzaValiationTest {
     Order order = new Order();
     Pizza pizza = new Pizza(PIZZA.DELUXE_VEGGIE, TYPE.VEG, SIZE.MEDIUM);
     Topping nonVegTopping = new Topping(TOPPING.CHICKEN_TIKKA, TYPE.NON_VEG);
-    pizza.setToppings(Collections.singletonList(nonVegTopping));
+    pizza.addTopping(nonVegTopping);
     order.pizzas = Arrays.asList(pizza);
     PizzaTest.validateBusinessRules(order);
   }

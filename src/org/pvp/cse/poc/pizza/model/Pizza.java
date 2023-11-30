@@ -5,6 +5,7 @@ import org.pvp.cse.poc.pizza.constants.PIZZA;
 import org.pvp.cse.poc.pizza.constants.SIZE;
 import org.pvp.cse.poc.pizza.constants.TYPE;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pizza {
@@ -31,6 +32,7 @@ public class Pizza {
         //this.crust = new Crust(CRUST.WHEAT_THIN_CRUST);
         this.type=type;
         this.size = size;
+        this.toppings = new ArrayList<>();
     }
 
     /*public Pizza(PIZZA name, TYPE type, Crust crust) {
@@ -44,9 +46,10 @@ public class Pizza {
         return toppings;
     }
 
-    public void setToppings(List<Topping> toppings) {
-        this.toppings = toppings;
+    public void addTopping(Topping topping) {
+        toppings.add(topping);
     }
+
     public Crust getCrust() {
         return crust;
     }

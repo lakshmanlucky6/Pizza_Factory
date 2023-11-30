@@ -1,24 +1,18 @@
 package org.pvp.cse.poc.pizza.model;
 
+import javafx.beans.property.SimpleListProperty;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order { // TODO : setter/getter access modifier
     public List<Pizza> pizzas;
     public List<Side> sides;
-
-    public double cost(){
-        double costs=0.0;
-        for(int i=0;i<pizzas.size();i++){
-            //costs=costs+menu.getPizzaCost(pizzas.get(i).getName(),pizzas.get(i).getSize());
-           // costs=costs+menu.getToppingCost(pizzas.get(i).getToppingName());
-        }
-        for(int i=0;i<sides.size();i++){
-          //  costs=costs+menu.getSideCost(sides.get(i).getName(),sides.get(i).getQty());
-        }
-        return costs;
+    public Order(){
+        pizzas = new ArrayList<>();
+        sides = new ArrayList<>();
     }
-
-    //menu
+     //menu
     // List of Pizzas
     //List of Sides
    /* System.out.println("Welcome to pizza factory");
