@@ -107,7 +107,7 @@ public class PizzaTest {
         pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.LARGE.nameOf(size));
         List<Topping> toppings = new ArrayList<>();
         // pizza.add(pizza1);
-        System.out.println("any specification crust toppings if any enter 1 or 0;");
+        System.out.println("any specification crust if any enter 1 or 0;");
         int crustInt = sc.nextInt();
         if (crustInt == 1) {
           System.out.print(menu.getAvailableCrusts());
@@ -119,7 +119,8 @@ public class PizzaTest {
         int toppingInt = sc.nextInt();
         if (toppingInt == 1) {
           System.out.println(menu.getAvailableVegToppings());
-          String top = sc.next();
+          sc.nextLine();
+          String top = sc.nextLine();
           Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
           pizza.addTopping(t);
         }

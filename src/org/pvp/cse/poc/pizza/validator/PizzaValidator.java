@@ -21,8 +21,7 @@ public class PizzaValidator implements IValidator<Pizza> {
 
   public void validateTopping(Pizza pizza) throws ToppingException {
     if (TYPE.VEG.equals(pizza.getType())) {
-      if (pizza.getToppings().stream()
-          .anyMatch(topping -> TYPE.NON_VEG.equals(topping.getType()))) {
+      if (pizza.getToppings().stream().anyMatch(topping -> TYPE.NON_VEG.equals(topping.getType()))) {
         throw new ToppingException("Vegetarian pizza cannot have a non--vegetarian topping");
       }
     }

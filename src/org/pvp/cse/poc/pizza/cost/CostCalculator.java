@@ -18,6 +18,7 @@ public class CostCalculator {
       for (Topping topping : pizza.getToppings()) {
         costs = costs + menu.getToppingCost(topping.getName());
       }
+      //costs=costs+menu.getCrpizza.getCrust()
     }
     for (Side side : order.sides) { // TODO : sides
       costs = costs + menu.getSideCost(side.getName(), side.getQty());
