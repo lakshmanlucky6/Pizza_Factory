@@ -177,7 +177,9 @@ public class Menu {
       return nonVegToppingMap.get(toppingName);
     }
   }
-
+  public Double getCrustCost(CRUST crustName) {
+    return  crustMap.get(crustName);
+  }
   /*  public static void main(String[] args){
     Menu menu = new Menu();
     System.out.println(

@@ -23,6 +23,9 @@ public class CostCalculator {
     for (Side side : order.sides) { // TODO : sides
       costs = costs + menu.getSideCost(side.getName(), side.getQty());
     }
+    //condition to be placed in case of crust is not specified
+    Crust crust=new Crust();
+    costs=costs+menu.getCrustCost(crust.getCrustName());
     return costs;
   }
 }
