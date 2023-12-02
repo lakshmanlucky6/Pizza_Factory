@@ -8,10 +8,11 @@ import java.util.List;
 public class Order { // TODO : setter/getter access modifier
     public List<Pizza> pizzas;
     public List<Side> sides;
-    public String cr
+    public List<Crust> crust;
     public Order(){
         pizzas = new ArrayList<>();
         sides = new ArrayList<>();
+        crust = new ArrayList<>(1);
     }
      //menu
     // List of Pizzas

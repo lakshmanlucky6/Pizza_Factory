@@ -1,5 +1,6 @@
 package org.pvp.cse.poc.pizza.cost;
 
+import org.pvp.cse.poc.pizza.constants.CRUST;
 import org.pvp.cse.poc.pizza.model.*;
 
 public class CostCalculator {
@@ -24,8 +25,9 @@ public class CostCalculator {
       costs = costs + menu.getSideCost(side.getName(), side.getQty());
     }
     //condition to be placed in case of crust is not specified
-    Crust crust=new Crust();
-    costs=costs+menu.getCrustCost(crust.getCrustName());
+    for (Crust crust : order.crust) {
+      costs = costs + menu.getCrustCost(crust.getCrustName());
+    }
     return costs;
   }
 }
