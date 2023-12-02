@@ -1,8 +1,10 @@
 package org.pvp.cse.poc.pizza.validator;
 
+import org.pvp.cse.poc.pizza.constants.TOPPING;
 import org.pvp.cse.poc.pizza.constants.TYPE;
 import org.pvp.cse.poc.pizza.exception.ToppingException;
 import org.pvp.cse.poc.pizza.model.Pizza;
+import org.pvp.cse.poc.pizza.model.Topping;
 
 public class PizzaValidator implements IValidator<Pizza> {
   @Override
@@ -29,9 +31,11 @@ public class PizzaValidator implements IValidator<Pizza> {
 
   // Teja  - Non--vegetarian pizza cannot have paneer topping.
   public void val2(Pizza pizza) throws ToppingException {
-    if (TYPE.VEG.equals(pizza.getType())) {
-      if (pizza.getToppings().stream().anyMatch(topping -> TYPE.VEG.equals("Paneer"))) {
-        throw new ToppingException("Non-vegetarian pizza cannot have paneer topping");
+    if (TYPE.NON_VEG.equals(pizza.getType())) {
+      for (Topping topping : pizza.getToppings()) {
+        if (TYPE.VEG.equals(topping.getType()) && TOPPING.PANEER.equals(topping.getName())) {
+          throw new ToppingException("Non-vegetarian pizza cannot have paneer topping");
+        }
       }
     }
   }

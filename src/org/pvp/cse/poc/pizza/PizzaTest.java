@@ -54,7 +54,7 @@ public class PizzaTest {
     // TODO: BusinessRules deekshitha
   }
 
-  private static void placeOrder(Order order) {
+  public static void placeOrder(Order order) {
     CostCalculator costCalculator = new CostCalculator(order);
     // thank you
     // Reference
