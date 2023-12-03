@@ -143,7 +143,7 @@ public class Menu {
     Set<Map.Entry<CRUST,Double>> entrySet=crustMap.entrySet();
     //builder.append("Crusts :\n");
     for(Map.Entry<CRUST,Double> entry : entrySet){
-      builder.append(entry.getKey().name()+" : "+entry.getValue()+"\n");
+      builder.append(entry.getKey().valueOf()+" : "+entry.getValue()+"\n");
     }
     return builder.toString();
   }

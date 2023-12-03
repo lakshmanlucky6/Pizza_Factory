@@ -29,7 +29,7 @@ public class PizzaValiationTest {
     Pizza pizza = new Pizza(PIZZA.DELUXE_VEGGIE, TYPE.VEG, SIZE.MEDIUM);
     Topping vegTopping = new Topping(TOPPING.CAPSICUM, TYPE.VEG);
     pizza.addTopping(vegTopping);
-    order.pizzas = Arrays.asList(pizza);
+    order.setPizzas(Arrays.asList(pizza));
     PizzaTest.validateBusinessRules(order);
     System.out.println("place order continues .............");
   }
@@ -39,7 +39,7 @@ public class PizzaValiationTest {
     Pizza pizza = new Pizza(PIZZA.DELUXE_VEGGIE, TYPE.VEG, SIZE.MEDIUM);
     Topping nonVegTopping = new Topping(TOPPING.CHICKEN_TIKKA, TYPE.NON_VEG);
     pizza.addTopping(nonVegTopping);
-    order.pizzas = Arrays.asList(pizza);
+    order.setPizzas(Arrays.asList(pizza));
     PizzaTest.validateBusinessRules(order);
   }
 }

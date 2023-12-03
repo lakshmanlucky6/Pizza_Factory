@@ -6,13 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order { // TODO : setter/getter access modifier
-    public List<Pizza> pizzas;
-    public List<Side> sides;
-    public List<Crust> crust;
+    private List<Pizza> pizzas;
+    private List<Side> sides;
+
+    public List<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    public List<Side> getSides() {
+        return sides;
+    }
+
+    public void setSides(List<Side> sides) {
+        this.sides = sides;
+    }
+
     public Order(){
         pizzas = new ArrayList<>();
         sides = new ArrayList<>();
-        crust = new ArrayList<>(1);
     }
      //menu
     // List of Pizzas

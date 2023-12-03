@@ -38,7 +38,7 @@ public class PizzaTest {
 
   public static void validateBusinessRules(Order order) throws ToppingException {
     // Implement validation
-    for (Pizza pizza : order.pizzas) {
+    for (Pizza pizza : order.getPizzas()) {
       IValidator<Pizza> pizzaIValidator = new PizzaValidator();
       try {
         pizzaIValidator.validate(pizza);
@@ -61,7 +61,7 @@ public class PizzaTest {
     // TODO: deekshitha
     int flag = 0;
     Inventory inventory = new Inventory();
-    for (Pizza pizza : order.pizzas) {
+    for (Pizza pizza : order.getPizzas()) {
       // TODO: Lakshman will do this change
       if (!inventory.checkPizza(pizza.getName(), pizza.getSize(), 1)) {
         System.out.println(pizza.getName() + "not available");
@@ -151,7 +151,7 @@ public class PizzaTest {
       } else {
         System.out.println("enter correct value ");
       }
-      order.pizzas = pizzaList;
+      order.setPizzas(pizzaList) ;
 
       System.out.println("Do u want to order more enter 1 for ordering else 0");
       flag = sc.hasNextBoolean();

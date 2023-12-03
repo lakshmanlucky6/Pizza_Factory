@@ -14,20 +14,17 @@ public class CostCalculator {
 
   public Double cost() {
     double costs = 0.0;
-    for (Pizza pizza : order.pizzas) {
+    for (Pizza pizza : order.getPizzas()) {
       costs = costs + menu.getPizzaCost(pizza.getName(), pizza.getSize());
       for (Topping topping : pizza.getToppings()) {
         costs = costs + menu.getToppingCost(topping.getName());
       }
-      //costs=costs+menu.getCrpizza.getCrust()
+      costs = costs + menu.getCrustCost(pizza.getCrust().getCrustName());
     }
-    for (Side side : order.sides) { // TODO : sides
+    for (Side side : order.getSides()) { // TODO : sides
       costs = costs + menu.getSideCost(side.getName(), side.getQty());
     }
     //condition to be placed in case of crust is not specified
-    for (Crust crust : order.crust) {
-      costs = costs + menu.getCrustCost(crust.getCrustName());
-    }
     return costs;
   }
 }
