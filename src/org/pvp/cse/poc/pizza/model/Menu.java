@@ -162,7 +162,7 @@ public class Menu {
      if(vegPizzaMap.containsKey(name)){
        return vegPizzaMap.get(name).get(size);
      }else{
-       return nonVegPizzaMap.get(name).get(size);
+       return 0;
      }
   }
 
@@ -171,11 +171,7 @@ public class Menu {
   }
 
   public Double getToppingCost(TOPPING toppingName) {
-    if(vegToppingMap.containsKey(toppingName)){
-      return vegToppingMap.get(toppingName);
-    }else{
-      return nonVegToppingMap.get(toppingName);
-    }
+      return vegToppingMap.getOrDefault(toppingName, 0.0);
   }
   public Double getCrustCost(CRUST crustName) {
     return  crustMap.get(crustName);
