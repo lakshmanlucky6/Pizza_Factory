@@ -127,24 +127,31 @@ public class PizzaTest {
         pizzaList.add(pizza);
       } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
         System.out.println(menu.getAvailableNonVegPizzas());
-        String pizzaName = sc.next();
+        System.out.println("Enter pizza name:");
+        sc.nextLine();
+        String pizzaName = sc.nextLine();
+        System.out.println("Enter size");
         String size = sc.next();
-        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.LARGE.nameOf(size));
+        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.NON_VEG, SIZE.LARGE.nameOf(size));
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
-        System.out.println("any specification crust toppings if any enter 1 or 0;");
+        System.out.println("any specification crust if any enter 1 or 0;");
         int crustInt = sc.nextInt();
         if (crustInt == 1) {
           System.out.println(menu.getAvailableCrusts());
-          String crust = sc.next(); // create crust and assign
+          System.out.println("Enter Crusts:");
+          sc.nextLine();
+          String crust = sc.nextLine(); // create crust and assign
           pizza.setCrust(new Crust(CRUST.nameOf(crust)));
         }
         System.out.println("any specification toppings if any enter 1 or 0;");
         int toppingInt = sc.nextInt();
         if (toppingInt == 1) {
           System.out.println(menu.getAvailableNonVegToppings());
-          String top = sc.next();
-          Topping t = new Topping(TOPPING.nameOf(top), TYPE.VEG);
+          System.out.println("Enter Toppings:");
+          sc.nextLine();
+          String top = sc.nextLine();
+          Topping t = new Topping(TOPPING.nameOf(top), TYPE.NON_VEG);
           pizza.addTopping(t);
         }
         pizzaList.add(pizza);
@@ -152,7 +159,6 @@ public class PizzaTest {
         System.out.println("enter correct value ");
       }
       order.setPizzas(pizzaList) ;
-
       System.out.println("Do u want to order more enter 1 for ordering else 0");
       flag = sc.hasNextBoolean();
     } while (flag);
