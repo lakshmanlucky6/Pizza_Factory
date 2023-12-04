@@ -88,7 +88,7 @@ public class PizzaTest {
     List<Pizza> pizzaList = new ArrayList<>(); // create object and assign
     Pizza pizza = null;
     System.out.println("Cook your PIZZERIA here!!");
-    boolean flag = true;
+    int flag = 0;
     do {
       System.out.print("SELECT THE TYPE ?");
       // TODO : Deekshi use TYPE enum
@@ -104,7 +104,7 @@ public class PizzaTest {
         String pizzaName = sc.nextLine();
         System.out.print("Enter Size - ");
         String size = sc.nextLine();
-        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.LARGE.nameOf(size));
+        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.VEG, SIZE.nameOf(size));
         List<Topping> toppings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust if any enter 1 or 0;");
@@ -127,12 +127,12 @@ public class PizzaTest {
         pizzaList.add(pizza);
       } else if (pizzaTypeInt == 2) { // pizzaTYpeInt == TYPE.NONVEG
         System.out.println(menu.getAvailableNonVegPizzas());
-        System.out.println("Enter pizza name:");
         sc.nextLine();
+        System.out.print("Enter Pizza - ");
         String pizzaName = sc.nextLine();
-        System.out.println("Enter size");
-        String size = sc.next();
-        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.NON_VEG, SIZE.LARGE.nameOf(size));
+        System.out.print("Enter Size - ");
+        String size = sc.nextLine();
+        pizza = new Pizza(PIZZA.nameOf(pizzaName), TYPE.NON_VEG, SIZE.nameOf(size));
         List<Topping> topings = new ArrayList<>();
         // pizza.add(pizza1);
         System.out.println("any specification crust if any enter 1 or 0;");
@@ -160,8 +160,8 @@ public class PizzaTest {
       }
       order.setPizzas(pizzaList) ;
       System.out.println("Do u want to order more enter 1 for ordering else 0");
-      flag = sc.hasNextBoolean();
-    } while (flag);
+      flag = sc.nextInt();
+    } while (flag>0);
     return order;
   }
 }

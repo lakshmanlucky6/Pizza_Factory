@@ -159,10 +159,10 @@ public class Menu {
   }
 
   public double getPizzaCost(PIZZA name, SIZE size) {
-     if(vegPizzaMap.containsKey(name)){
+     if(name.getType().equals(TYPE.VEG)){
        return vegPizzaMap.get(name).get(size);
      }else{
-       return 0;
+       return nonVegPizzaMap.get(name).get(size);
      }
   }
 
@@ -171,7 +171,11 @@ public class Menu {
   }
 
   public Double getToppingCost(TOPPING toppingName) {
+    if (toppingName.getType().equals(TYPE.VEG)){
       return vegToppingMap.getOrDefault(toppingName, 0.0);
+    }else{
+      return nonVegToppingMap.getOrDefault(toppingName, 0.0);
+    }
   }
   public Double getCrustCost(CRUST crustName) {
     return  crustMap.get(crustName);

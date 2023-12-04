@@ -12,6 +12,9 @@ public enum TOPPING {
     CHEESE("Cheese",null);
     String name;
     TYPE type;
+    public TYPE getType(){
+        return type;
+    }
     TOPPING(String name, TYPE type) {
         this.name=name;
         this.type=type;

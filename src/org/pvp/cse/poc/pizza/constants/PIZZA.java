@@ -26,12 +26,15 @@ public enum PIZZA { // TODO: Lakshman
               return PANEER_TIKKA;
           case "Chicken Tikka":
               return CHICKEN_TIKKA;
-          case "Non--Veg Supreme":
+          case "Non-Veg Supreme":
               return NON_VEG_SUPREME;
           case "Pepper Barbecue Chicken":
               return PEPPER_BARBECUE_CHICKEN;
           default:
               return null; /* throw exeption -> pizzaName not exist */
       }
+  }
+  public TYPE getType(){
+      return type;
   }
 }
