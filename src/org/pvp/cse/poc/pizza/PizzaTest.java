@@ -85,7 +85,9 @@ public class PizzaTest {
     Menu menu = new Menu();
     Order order = new Order();
     Scanner sc = new Scanner(System.in);
-    List<Pizza> pizzaList = new ArrayList<>(); // create object and assign
+    List<Pizza> pizzaList = new ArrayList<>();
+    List<Side> sidesList = new ArrayList<>();
+    // create object and assign
     Pizza pizza = null;
     System.out.println("Cook your PIZZERIA here!!");
     int flag = 0;
@@ -158,10 +160,24 @@ public class PizzaTest {
       } else {
         System.out.println("enter correct value ");
       }
-      order.setPizzas(pizzaList) ;
       System.out.println("Do u want to order more enter 1 for ordering else 0");
       flag = sc.nextInt();
-    } while (flag>0);
+    } while (flag==1);
+    order.setPizzas(pizzaList) ;
+    //taking siding
+    int sidesFlag=0;
+    do {
+      System.out.println("Do want any kind of sides:");
+      System.out.println(menu.getAvailableSides());
+      System.out.println("Enter sides:");
+      sc.next();
+      String name = sc.nextLine();
+      int qty = sc.nextInt();
+      System.out.println("Do you want any more sides if 1 else 0:");
+      sidesList.add(new Side(SIDE.nameOf(name),qty));
+      sidesFlag=sc.nextInt();
+    }while(sidesFlag==1);
+    order.setSides(sidesList);
     return order;
   }
 }
