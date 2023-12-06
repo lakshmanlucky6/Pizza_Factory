@@ -169,9 +169,10 @@ public class PizzaTest {
     do {
       System.out.println("Do want any kind of sides:");
       System.out.println(menu.getAvailableSides());
-      System.out.println("Enter sides:");
-      sc.next();
+      sc.nextLine();
+      System.out.println("Enter side name :");
       String name = sc.nextLine();
+      System.out.println("Enter side quantity :");
       int qty = sc.nextInt();
       System.out.println("Do you want any more sides if 1 else 0:");
       sidesList.add(new Side(SIDE.nameOf(name),qty));
